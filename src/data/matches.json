@@ -1,0 +1,1978 @@
+[
+  {
+    "id": "2026-06-11-mexico-vs-south-africa",
+    "num": 1,
+    "stage": "group",
+    "round": "Matchday 1",
+    "group": "A",
+    "venueId": "mexico-city",
+    "kickoffUtc": "2026-06-11T19:00:00.000Z",
+    "team1": {
+      "code": "MEX",
+      "display": "Mexico",
+      "resolved": true
+    },
+    "team2": {
+      "code": "RSA",
+      "display": "South Africa",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-11-south-korea-vs-czech-republic",
+    "num": 2,
+    "stage": "group",
+    "round": "Matchday 1",
+    "group": "A",
+    "venueId": "guadalajara",
+    "kickoffUtc": "2026-06-12T02:00:00.000Z",
+    "team1": {
+      "code": "KOR",
+      "display": "South Korea",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CZE",
+      "display": "Czech Republic",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-18-czech-republic-vs-south-africa",
+    "num": 3,
+    "stage": "group",
+    "round": "Matchday 8",
+    "group": "A",
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-06-18T16:00:00.000Z",
+    "team1": {
+      "code": "CZE",
+      "display": "Czech Republic",
+      "resolved": true
+    },
+    "team2": {
+      "code": "RSA",
+      "display": "South Africa",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-18-mexico-vs-south-korea",
+    "num": 4,
+    "stage": "group",
+    "round": "Matchday 8",
+    "group": "A",
+    "venueId": "guadalajara",
+    "kickoffUtc": "2026-06-19T01:00:00.000Z",
+    "team1": {
+      "code": "MEX",
+      "display": "Mexico",
+      "resolved": true
+    },
+    "team2": {
+      "code": "KOR",
+      "display": "South Korea",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-24-czech-republic-vs-mexico",
+    "num": 5,
+    "stage": "group",
+    "round": "Matchday 14",
+    "group": "A",
+    "venueId": "mexico-city",
+    "kickoffUtc": "2026-06-25T01:00:00.000Z",
+    "team1": {
+      "code": "CZE",
+      "display": "Czech Republic",
+      "resolved": true
+    },
+    "team2": {
+      "code": "MEX",
+      "display": "Mexico",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-24-south-africa-vs-south-korea",
+    "num": 6,
+    "stage": "group",
+    "round": "Matchday 14",
+    "group": "A",
+    "venueId": "monterrey",
+    "kickoffUtc": "2026-06-25T01:00:00.000Z",
+    "team1": {
+      "code": "RSA",
+      "display": "South Africa",
+      "resolved": true
+    },
+    "team2": {
+      "code": "KOR",
+      "display": "South Korea",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-12-canada-vs-bosnia-and-herzegovina",
+    "num": 7,
+    "stage": "group",
+    "round": "Matchday 2",
+    "group": "B",
+    "venueId": "toronto",
+    "kickoffUtc": "2026-06-12T19:00:00.000Z",
+    "team1": {
+      "code": "CAN",
+      "display": "Canada",
+      "resolved": true
+    },
+    "team2": {
+      "code": "BIH",
+      "display": "Bosnia & Herzegovina",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-13-qatar-vs-switzerland",
+    "num": 8,
+    "stage": "group",
+    "round": "Matchday 3",
+    "group": "B",
+    "venueId": "san-francisco-bay-area",
+    "kickoffUtc": "2026-06-13T19:00:00.000Z",
+    "team1": {
+      "code": "QAT",
+      "display": "Qatar",
+      "resolved": true
+    },
+    "team2": {
+      "code": "SUI",
+      "display": "Switzerland",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-18-switzerland-vs-bosnia-and-herzegovina",
+    "num": 9,
+    "stage": "group",
+    "round": "Matchday 8",
+    "group": "B",
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-06-18T19:00:00.000Z",
+    "team1": {
+      "code": "SUI",
+      "display": "Switzerland",
+      "resolved": true
+    },
+    "team2": {
+      "code": "BIH",
+      "display": "Bosnia & Herzegovina",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-18-canada-vs-qatar",
+    "num": 10,
+    "stage": "group",
+    "round": "Matchday 8",
+    "group": "B",
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-06-18T22:00:00.000Z",
+    "team1": {
+      "code": "CAN",
+      "display": "Canada",
+      "resolved": true
+    },
+    "team2": {
+      "code": "QAT",
+      "display": "Qatar",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-24-switzerland-vs-canada",
+    "num": 11,
+    "stage": "group",
+    "round": "Matchday 14",
+    "group": "B",
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-06-24T19:00:00.000Z",
+    "team1": {
+      "code": "SUI",
+      "display": "Switzerland",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CAN",
+      "display": "Canada",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-24-bosnia-and-herzegovina-vs-qatar",
+    "num": 12,
+    "stage": "group",
+    "round": "Matchday 14",
+    "group": "B",
+    "venueId": "seattle",
+    "kickoffUtc": "2026-06-24T19:00:00.000Z",
+    "team1": {
+      "code": "BIH",
+      "display": "Bosnia & Herzegovina",
+      "resolved": true
+    },
+    "team2": {
+      "code": "QAT",
+      "display": "Qatar",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-13-brazil-vs-morocco",
+    "num": 13,
+    "stage": "group",
+    "round": "Matchday 3",
+    "group": "C",
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-06-13T22:00:00.000Z",
+    "team1": {
+      "code": "BRA",
+      "display": "Brazil",
+      "resolved": true
+    },
+    "team2": {
+      "code": "MAR",
+      "display": "Morocco",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-13-haiti-vs-scotland",
+    "num": 14,
+    "stage": "group",
+    "round": "Matchday 3",
+    "group": "C",
+    "venueId": "boston",
+    "kickoffUtc": "2026-06-14T01:00:00.000Z",
+    "team1": {
+      "code": "HAI",
+      "display": "Haiti",
+      "resolved": true
+    },
+    "team2": {
+      "code": "SCO",
+      "display": "Scotland",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-19-scotland-vs-morocco",
+    "num": 15,
+    "stage": "group",
+    "round": "Matchday 9",
+    "group": "C",
+    "venueId": "boston",
+    "kickoffUtc": "2026-06-19T22:00:00.000Z",
+    "team1": {
+      "code": "SCO",
+      "display": "Scotland",
+      "resolved": true
+    },
+    "team2": {
+      "code": "MAR",
+      "display": "Morocco",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-19-brazil-vs-haiti",
+    "num": 16,
+    "stage": "group",
+    "round": "Matchday 9",
+    "group": "C",
+    "venueId": "philadelphia",
+    "kickoffUtc": "2026-06-20T00:30:00.000Z",
+    "team1": {
+      "code": "BRA",
+      "display": "Brazil",
+      "resolved": true
+    },
+    "team2": {
+      "code": "HAI",
+      "display": "Haiti",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-24-scotland-vs-brazil",
+    "num": 17,
+    "stage": "group",
+    "round": "Matchday 14",
+    "group": "C",
+    "venueId": "miami",
+    "kickoffUtc": "2026-06-24T22:00:00.000Z",
+    "team1": {
+      "code": "SCO",
+      "display": "Scotland",
+      "resolved": true
+    },
+    "team2": {
+      "code": "BRA",
+      "display": "Brazil",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-24-morocco-vs-haiti",
+    "num": 18,
+    "stage": "group",
+    "round": "Matchday 14",
+    "group": "C",
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-06-24T22:00:00.000Z",
+    "team1": {
+      "code": "MAR",
+      "display": "Morocco",
+      "resolved": true
+    },
+    "team2": {
+      "code": "HAI",
+      "display": "Haiti",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-12-usa-vs-paraguay",
+    "num": 19,
+    "stage": "group",
+    "round": "Matchday 2",
+    "group": "D",
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-06-13T01:00:00.000Z",
+    "team1": {
+      "code": "USA",
+      "display": "USA",
+      "resolved": true
+    },
+    "team2": {
+      "code": "PAR",
+      "display": "Paraguay",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-13-australia-vs-turkey",
+    "num": 20,
+    "stage": "group",
+    "round": "Matchday 3",
+    "group": "D",
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-06-14T04:00:00.000Z",
+    "team1": {
+      "code": "AUS",
+      "display": "Australia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "TUR",
+      "display": "Turkey",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-19-usa-vs-australia",
+    "num": 21,
+    "stage": "group",
+    "round": "Matchday 9",
+    "group": "D",
+    "venueId": "seattle",
+    "kickoffUtc": "2026-06-19T19:00:00.000Z",
+    "team1": {
+      "code": "USA",
+      "display": "USA",
+      "resolved": true
+    },
+    "team2": {
+      "code": "AUS",
+      "display": "Australia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-19-turkey-vs-paraguay",
+    "num": 22,
+    "stage": "group",
+    "round": "Matchday 9",
+    "group": "D",
+    "venueId": "san-francisco-bay-area",
+    "kickoffUtc": "2026-06-20T03:00:00.000Z",
+    "team1": {
+      "code": "TUR",
+      "display": "Turkey",
+      "resolved": true
+    },
+    "team2": {
+      "code": "PAR",
+      "display": "Paraguay",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-25-turkey-vs-usa",
+    "num": 23,
+    "stage": "group",
+    "round": "Matchday 15",
+    "group": "D",
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-06-26T02:00:00.000Z",
+    "team1": {
+      "code": "TUR",
+      "display": "Turkey",
+      "resolved": true
+    },
+    "team2": {
+      "code": "USA",
+      "display": "USA",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-25-paraguay-vs-australia",
+    "num": 24,
+    "stage": "group",
+    "round": "Matchday 15",
+    "group": "D",
+    "venueId": "san-francisco-bay-area",
+    "kickoffUtc": "2026-06-26T02:00:00.000Z",
+    "team1": {
+      "code": "PAR",
+      "display": "Paraguay",
+      "resolved": true
+    },
+    "team2": {
+      "code": "AUS",
+      "display": "Australia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-14-germany-vs-curacao",
+    "num": 25,
+    "stage": "group",
+    "round": "Matchday 4",
+    "group": "E",
+    "venueId": "houston",
+    "kickoffUtc": "2026-06-14T17:00:00.000Z",
+    "team1": {
+      "code": "GER",
+      "display": "Germany",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CUW",
+      "display": "Curaçao",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-14-ivory-coast-vs-ecuador",
+    "num": 26,
+    "stage": "group",
+    "round": "Matchday 4",
+    "group": "E",
+    "venueId": "philadelphia",
+    "kickoffUtc": "2026-06-14T23:00:00.000Z",
+    "team1": {
+      "code": "CIV",
+      "display": "Ivory Coast",
+      "resolved": true
+    },
+    "team2": {
+      "code": "ECU",
+      "display": "Ecuador",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-20-germany-vs-ivory-coast",
+    "num": 27,
+    "stage": "group",
+    "round": "Matchday 10",
+    "group": "E",
+    "venueId": "toronto",
+    "kickoffUtc": "2026-06-20T20:00:00.000Z",
+    "team1": {
+      "code": "GER",
+      "display": "Germany",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CIV",
+      "display": "Ivory Coast",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-20-ecuador-vs-curacao",
+    "num": 28,
+    "stage": "group",
+    "round": "Matchday 10",
+    "group": "E",
+    "venueId": "kansas-city",
+    "kickoffUtc": "2026-06-21T00:00:00.000Z",
+    "team1": {
+      "code": "ECU",
+      "display": "Ecuador",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CUW",
+      "display": "Curaçao",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-25-curacao-vs-ivory-coast",
+    "num": 29,
+    "stage": "group",
+    "round": "Matchday 15",
+    "group": "E",
+    "venueId": "philadelphia",
+    "kickoffUtc": "2026-06-25T20:00:00.000Z",
+    "team1": {
+      "code": "CUW",
+      "display": "Curaçao",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CIV",
+      "display": "Ivory Coast",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-25-ecuador-vs-germany",
+    "num": 30,
+    "stage": "group",
+    "round": "Matchday 15",
+    "group": "E",
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-06-25T20:00:00.000Z",
+    "team1": {
+      "code": "ECU",
+      "display": "Ecuador",
+      "resolved": true
+    },
+    "team2": {
+      "code": "GER",
+      "display": "Germany",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-14-netherlands-vs-japan",
+    "num": 31,
+    "stage": "group",
+    "round": "Matchday 4",
+    "group": "F",
+    "venueId": "dallas",
+    "kickoffUtc": "2026-06-14T20:00:00.000Z",
+    "team1": {
+      "code": "NED",
+      "display": "Netherlands",
+      "resolved": true
+    },
+    "team2": {
+      "code": "JPN",
+      "display": "Japan",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-14-sweden-vs-tunisia",
+    "num": 32,
+    "stage": "group",
+    "round": "Matchday 4",
+    "group": "F",
+    "venueId": "monterrey",
+    "kickoffUtc": "2026-06-15T02:00:00.000Z",
+    "team1": {
+      "code": "SWE",
+      "display": "Sweden",
+      "resolved": true
+    },
+    "team2": {
+      "code": "TUN",
+      "display": "Tunisia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-20-netherlands-vs-sweden",
+    "num": 33,
+    "stage": "group",
+    "round": "Matchday 10",
+    "group": "F",
+    "venueId": "houston",
+    "kickoffUtc": "2026-06-20T17:00:00.000Z",
+    "team1": {
+      "code": "NED",
+      "display": "Netherlands",
+      "resolved": true
+    },
+    "team2": {
+      "code": "SWE",
+      "display": "Sweden",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-20-tunisia-vs-japan",
+    "num": 34,
+    "stage": "group",
+    "round": "Matchday 10",
+    "group": "F",
+    "venueId": "monterrey",
+    "kickoffUtc": "2026-06-21T04:00:00.000Z",
+    "team1": {
+      "code": "TUN",
+      "display": "Tunisia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "JPN",
+      "display": "Japan",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-25-japan-vs-sweden",
+    "num": 35,
+    "stage": "group",
+    "round": "Matchday 15",
+    "group": "F",
+    "venueId": "dallas",
+    "kickoffUtc": "2026-06-25T23:00:00.000Z",
+    "team1": {
+      "code": "JPN",
+      "display": "Japan",
+      "resolved": true
+    },
+    "team2": {
+      "code": "SWE",
+      "display": "Sweden",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-25-tunisia-vs-netherlands",
+    "num": 36,
+    "stage": "group",
+    "round": "Matchday 15",
+    "group": "F",
+    "venueId": "kansas-city",
+    "kickoffUtc": "2026-06-25T23:00:00.000Z",
+    "team1": {
+      "code": "TUN",
+      "display": "Tunisia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "NED",
+      "display": "Netherlands",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-15-belgium-vs-egypt",
+    "num": 37,
+    "stage": "group",
+    "round": "Matchday 5",
+    "group": "G",
+    "venueId": "seattle",
+    "kickoffUtc": "2026-06-15T19:00:00.000Z",
+    "team1": {
+      "code": "BEL",
+      "display": "Belgium",
+      "resolved": true
+    },
+    "team2": {
+      "code": "EGY",
+      "display": "Egypt",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-15-iran-vs-new-zealand",
+    "num": 38,
+    "stage": "group",
+    "round": "Matchday 5",
+    "group": "G",
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-06-16T01:00:00.000Z",
+    "team1": {
+      "code": "IRN",
+      "display": "Iran",
+      "resolved": true
+    },
+    "team2": {
+      "code": "NZL",
+      "display": "New Zealand",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-21-belgium-vs-iran",
+    "num": 39,
+    "stage": "group",
+    "round": "Matchday 11",
+    "group": "G",
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-06-21T19:00:00.000Z",
+    "team1": {
+      "code": "BEL",
+      "display": "Belgium",
+      "resolved": true
+    },
+    "team2": {
+      "code": "IRN",
+      "display": "Iran",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-21-new-zealand-vs-egypt",
+    "num": 40,
+    "stage": "group",
+    "round": "Matchday 11",
+    "group": "G",
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-06-22T01:00:00.000Z",
+    "team1": {
+      "code": "NZL",
+      "display": "New Zealand",
+      "resolved": true
+    },
+    "team2": {
+      "code": "EGY",
+      "display": "Egypt",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-26-egypt-vs-iran",
+    "num": 41,
+    "stage": "group",
+    "round": "Matchday 16",
+    "group": "G",
+    "venueId": "seattle",
+    "kickoffUtc": "2026-06-27T03:00:00.000Z",
+    "team1": {
+      "code": "EGY",
+      "display": "Egypt",
+      "resolved": true
+    },
+    "team2": {
+      "code": "IRN",
+      "display": "Iran",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-26-new-zealand-vs-belgium",
+    "num": 42,
+    "stage": "group",
+    "round": "Matchday 16",
+    "group": "G",
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-06-27T03:00:00.000Z",
+    "team1": {
+      "code": "NZL",
+      "display": "New Zealand",
+      "resolved": true
+    },
+    "team2": {
+      "code": "BEL",
+      "display": "Belgium",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-15-spain-vs-cape-verde",
+    "num": 43,
+    "stage": "group",
+    "round": "Matchday 5",
+    "group": "H",
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-06-15T16:00:00.000Z",
+    "team1": {
+      "code": "ESP",
+      "display": "Spain",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CPV",
+      "display": "Cape Verde",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-15-saudi-arabia-vs-uruguay",
+    "num": 44,
+    "stage": "group",
+    "round": "Matchday 5",
+    "group": "H",
+    "venueId": "miami",
+    "kickoffUtc": "2026-06-15T22:00:00.000Z",
+    "team1": {
+      "code": "KSA",
+      "display": "Saudi Arabia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "URU",
+      "display": "Uruguay",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-21-spain-vs-saudi-arabia",
+    "num": 45,
+    "stage": "group",
+    "round": "Matchday 11",
+    "group": "H",
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-06-21T16:00:00.000Z",
+    "team1": {
+      "code": "ESP",
+      "display": "Spain",
+      "resolved": true
+    },
+    "team2": {
+      "code": "KSA",
+      "display": "Saudi Arabia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-21-uruguay-vs-cape-verde",
+    "num": 46,
+    "stage": "group",
+    "round": "Matchday 11",
+    "group": "H",
+    "venueId": "miami",
+    "kickoffUtc": "2026-06-21T22:00:00.000Z",
+    "team1": {
+      "code": "URU",
+      "display": "Uruguay",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CPV",
+      "display": "Cape Verde",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-26-cape-verde-vs-saudi-arabia",
+    "num": 47,
+    "stage": "group",
+    "round": "Matchday 16",
+    "group": "H",
+    "venueId": "houston",
+    "kickoffUtc": "2026-06-27T00:00:00.000Z",
+    "team1": {
+      "code": "CPV",
+      "display": "Cape Verde",
+      "resolved": true
+    },
+    "team2": {
+      "code": "KSA",
+      "display": "Saudi Arabia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-26-uruguay-vs-spain",
+    "num": 48,
+    "stage": "group",
+    "round": "Matchday 16",
+    "group": "H",
+    "venueId": "guadalajara",
+    "kickoffUtc": "2026-06-27T00:00:00.000Z",
+    "team1": {
+      "code": "URU",
+      "display": "Uruguay",
+      "resolved": true
+    },
+    "team2": {
+      "code": "ESP",
+      "display": "Spain",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-16-france-vs-senegal",
+    "num": 49,
+    "stage": "group",
+    "round": "Matchday 6",
+    "group": "I",
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-06-16T19:00:00.000Z",
+    "team1": {
+      "code": "FRA",
+      "display": "France",
+      "resolved": true
+    },
+    "team2": {
+      "code": "SEN",
+      "display": "Senegal",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-16-iraq-vs-norway",
+    "num": 50,
+    "stage": "group",
+    "round": "Matchday 6",
+    "group": "I",
+    "venueId": "boston",
+    "kickoffUtc": "2026-06-16T22:00:00.000Z",
+    "team1": {
+      "code": "IRQ",
+      "display": "Iraq",
+      "resolved": true
+    },
+    "team2": {
+      "code": "NOR",
+      "display": "Norway",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-22-france-vs-iraq",
+    "num": 51,
+    "stage": "group",
+    "round": "Matchday 12",
+    "group": "I",
+    "venueId": "philadelphia",
+    "kickoffUtc": "2026-06-22T21:00:00.000Z",
+    "team1": {
+      "code": "FRA",
+      "display": "France",
+      "resolved": true
+    },
+    "team2": {
+      "code": "IRQ",
+      "display": "Iraq",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-22-norway-vs-senegal",
+    "num": 52,
+    "stage": "group",
+    "round": "Matchday 12",
+    "group": "I",
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-06-23T00:00:00.000Z",
+    "team1": {
+      "code": "NOR",
+      "display": "Norway",
+      "resolved": true
+    },
+    "team2": {
+      "code": "SEN",
+      "display": "Senegal",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-26-norway-vs-france",
+    "num": 53,
+    "stage": "group",
+    "round": "Matchday 16",
+    "group": "I",
+    "venueId": "boston",
+    "kickoffUtc": "2026-06-26T19:00:00.000Z",
+    "team1": {
+      "code": "NOR",
+      "display": "Norway",
+      "resolved": true
+    },
+    "team2": {
+      "code": "FRA",
+      "display": "France",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-26-senegal-vs-iraq",
+    "num": 54,
+    "stage": "group",
+    "round": "Matchday 16",
+    "group": "I",
+    "venueId": "toronto",
+    "kickoffUtc": "2026-06-26T19:00:00.000Z",
+    "team1": {
+      "code": "SEN",
+      "display": "Senegal",
+      "resolved": true
+    },
+    "team2": {
+      "code": "IRQ",
+      "display": "Iraq",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-16-argentina-vs-algeria",
+    "num": 55,
+    "stage": "group",
+    "round": "Matchday 6",
+    "group": "J",
+    "venueId": "kansas-city",
+    "kickoffUtc": "2026-06-17T01:00:00.000Z",
+    "team1": {
+      "code": "ARG",
+      "display": "Argentina",
+      "resolved": true
+    },
+    "team2": {
+      "code": "ALG",
+      "display": "Algeria",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-16-austria-vs-jordan",
+    "num": 56,
+    "stage": "group",
+    "round": "Matchday 6",
+    "group": "J",
+    "venueId": "san-francisco-bay-area",
+    "kickoffUtc": "2026-06-17T04:00:00.000Z",
+    "team1": {
+      "code": "AUT",
+      "display": "Austria",
+      "resolved": true
+    },
+    "team2": {
+      "code": "JOR",
+      "display": "Jordan",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-22-argentina-vs-austria",
+    "num": 57,
+    "stage": "group",
+    "round": "Matchday 12",
+    "group": "J",
+    "venueId": "dallas",
+    "kickoffUtc": "2026-06-22T17:00:00.000Z",
+    "team1": {
+      "code": "ARG",
+      "display": "Argentina",
+      "resolved": true
+    },
+    "team2": {
+      "code": "AUT",
+      "display": "Austria",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-22-jordan-vs-algeria",
+    "num": 58,
+    "stage": "group",
+    "round": "Matchday 12",
+    "group": "J",
+    "venueId": "san-francisco-bay-area",
+    "kickoffUtc": "2026-06-23T03:00:00.000Z",
+    "team1": {
+      "code": "JOR",
+      "display": "Jordan",
+      "resolved": true
+    },
+    "team2": {
+      "code": "ALG",
+      "display": "Algeria",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-27-algeria-vs-austria",
+    "num": 59,
+    "stage": "group",
+    "round": "Matchday 17",
+    "group": "J",
+    "venueId": "kansas-city",
+    "kickoffUtc": "2026-06-28T02:00:00.000Z",
+    "team1": {
+      "code": "ALG",
+      "display": "Algeria",
+      "resolved": true
+    },
+    "team2": {
+      "code": "AUT",
+      "display": "Austria",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-27-jordan-vs-argentina",
+    "num": 60,
+    "stage": "group",
+    "round": "Matchday 17",
+    "group": "J",
+    "venueId": "dallas",
+    "kickoffUtc": "2026-06-28T02:00:00.000Z",
+    "team1": {
+      "code": "JOR",
+      "display": "Jordan",
+      "resolved": true
+    },
+    "team2": {
+      "code": "ARG",
+      "display": "Argentina",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-17-portugal-vs-dr-congo",
+    "num": 61,
+    "stage": "group",
+    "round": "Matchday 7",
+    "group": "K",
+    "venueId": "houston",
+    "kickoffUtc": "2026-06-17T17:00:00.000Z",
+    "team1": {
+      "code": "POR",
+      "display": "Portugal",
+      "resolved": true
+    },
+    "team2": {
+      "code": "COD",
+      "display": "DR Congo",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-17-uzbekistan-vs-colombia",
+    "num": 62,
+    "stage": "group",
+    "round": "Matchday 7",
+    "group": "K",
+    "venueId": "mexico-city",
+    "kickoffUtc": "2026-06-18T02:00:00.000Z",
+    "team1": {
+      "code": "UZB",
+      "display": "Uzbekistan",
+      "resolved": true
+    },
+    "team2": {
+      "code": "COL",
+      "display": "Colombia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-23-portugal-vs-uzbekistan",
+    "num": 63,
+    "stage": "group",
+    "round": "Matchday 13",
+    "group": "K",
+    "venueId": "houston",
+    "kickoffUtc": "2026-06-23T17:00:00.000Z",
+    "team1": {
+      "code": "POR",
+      "display": "Portugal",
+      "resolved": true
+    },
+    "team2": {
+      "code": "UZB",
+      "display": "Uzbekistan",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-23-colombia-vs-dr-congo",
+    "num": 64,
+    "stage": "group",
+    "round": "Matchday 13",
+    "group": "K",
+    "venueId": "guadalajara",
+    "kickoffUtc": "2026-06-24T02:00:00.000Z",
+    "team1": {
+      "code": "COL",
+      "display": "Colombia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "COD",
+      "display": "DR Congo",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-27-colombia-vs-portugal",
+    "num": 65,
+    "stage": "group",
+    "round": "Matchday 17",
+    "group": "K",
+    "venueId": "miami",
+    "kickoffUtc": "2026-06-27T23:30:00.000Z",
+    "team1": {
+      "code": "COL",
+      "display": "Colombia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "POR",
+      "display": "Portugal",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-27-dr-congo-vs-uzbekistan",
+    "num": 66,
+    "stage": "group",
+    "round": "Matchday 17",
+    "group": "K",
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-06-27T23:30:00.000Z",
+    "team1": {
+      "code": "COD",
+      "display": "DR Congo",
+      "resolved": true
+    },
+    "team2": {
+      "code": "UZB",
+      "display": "Uzbekistan",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-17-england-vs-croatia",
+    "num": 67,
+    "stage": "group",
+    "round": "Matchday 7",
+    "group": "L",
+    "venueId": "dallas",
+    "kickoffUtc": "2026-06-17T20:00:00.000Z",
+    "team1": {
+      "code": "ENG",
+      "display": "England",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CRO",
+      "display": "Croatia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-17-ghana-vs-panama",
+    "num": 68,
+    "stage": "group",
+    "round": "Matchday 7",
+    "group": "L",
+    "venueId": "toronto",
+    "kickoffUtc": "2026-06-17T23:00:00.000Z",
+    "team1": {
+      "code": "GHA",
+      "display": "Ghana",
+      "resolved": true
+    },
+    "team2": {
+      "code": "PAN",
+      "display": "Panama",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-23-england-vs-ghana",
+    "num": 69,
+    "stage": "group",
+    "round": "Matchday 13",
+    "group": "L",
+    "venueId": "boston",
+    "kickoffUtc": "2026-06-23T20:00:00.000Z",
+    "team1": {
+      "code": "ENG",
+      "display": "England",
+      "resolved": true
+    },
+    "team2": {
+      "code": "GHA",
+      "display": "Ghana",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-23-panama-vs-croatia",
+    "num": 70,
+    "stage": "group",
+    "round": "Matchday 13",
+    "group": "L",
+    "venueId": "toronto",
+    "kickoffUtc": "2026-06-23T23:00:00.000Z",
+    "team1": {
+      "code": "PAN",
+      "display": "Panama",
+      "resolved": true
+    },
+    "team2": {
+      "code": "CRO",
+      "display": "Croatia",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-27-panama-vs-england",
+    "num": 71,
+    "stage": "group",
+    "round": "Matchday 17",
+    "group": "L",
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-06-27T21:00:00.000Z",
+    "team1": {
+      "code": "PAN",
+      "display": "Panama",
+      "resolved": true
+    },
+    "team2": {
+      "code": "ENG",
+      "display": "England",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-27-croatia-vs-ghana",
+    "num": 72,
+    "stage": "group",
+    "round": "Matchday 17",
+    "group": "L",
+    "venueId": "philadelphia",
+    "kickoffUtc": "2026-06-27T21:00:00.000Z",
+    "team1": {
+      "code": "CRO",
+      "display": "Croatia",
+      "resolved": true
+    },
+    "team2": {
+      "code": "GHA",
+      "display": "Ghana",
+      "resolved": true
+    }
+  },
+  {
+    "id": "2026-06-28-r32-m73",
+    "num": 73,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-06-28T19:00:00.000Z",
+    "team1": {
+      "code": "2A",
+      "display": "Runner-up Group A",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2B",
+      "display": "Runner-up Group B",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-06-29-r32-m74",
+    "num": 74,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "boston",
+    "kickoffUtc": "2026-06-29T20:30:00.000Z",
+    "team1": {
+      "code": "1E",
+      "display": "Winner Group E",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3A/B/C/D/F",
+      "display": "3rd Place Group A/B/C/D/F",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-06-29-r32-m75",
+    "num": 75,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "monterrey",
+    "kickoffUtc": "2026-06-30T01:00:00.000Z",
+    "team1": {
+      "code": "1F",
+      "display": "Winner Group F",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2C",
+      "display": "Runner-up Group C",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-06-29-r32-m76",
+    "num": 76,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "houston",
+    "kickoffUtc": "2026-06-29T17:00:00.000Z",
+    "team1": {
+      "code": "1C",
+      "display": "Winner Group C",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2F",
+      "display": "Runner-up Group F",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-06-30-r32-m77",
+    "num": 77,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-06-30T21:00:00.000Z",
+    "team1": {
+      "code": "1I",
+      "display": "Winner Group I",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3C/D/F/G/H",
+      "display": "3rd Place Group C/D/F/G/H",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-06-30-r32-m78",
+    "num": 78,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "dallas",
+    "kickoffUtc": "2026-06-30T17:00:00.000Z",
+    "team1": {
+      "code": "2E",
+      "display": "Runner-up Group E",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2I",
+      "display": "Runner-up Group I",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-06-30-r32-m79",
+    "num": 79,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "mexico-city",
+    "kickoffUtc": "2026-07-01T01:00:00.000Z",
+    "team1": {
+      "code": "1A",
+      "display": "Winner Group A",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3C/E/F/H/I",
+      "display": "3rd Place Group C/E/F/H/I",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-01-r32-m80",
+    "num": 80,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-07-01T16:00:00.000Z",
+    "team1": {
+      "code": "1L",
+      "display": "Winner Group L",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3E/H/I/J/K",
+      "display": "3rd Place Group E/H/I/J/K",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-01-r32-m81",
+    "num": 81,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "san-francisco-bay-area",
+    "kickoffUtc": "2026-07-02T00:00:00.000Z",
+    "team1": {
+      "code": "1D",
+      "display": "Winner Group D",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3B/E/F/I/J",
+      "display": "3rd Place Group B/E/F/I/J",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-01-r32-m82",
+    "num": 82,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "seattle",
+    "kickoffUtc": "2026-07-01T20:00:00.000Z",
+    "team1": {
+      "code": "1G",
+      "display": "Winner Group G",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3A/E/H/I/J",
+      "display": "3rd Place Group A/E/H/I/J",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-02-r32-m83",
+    "num": 83,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "toronto",
+    "kickoffUtc": "2026-07-02T23:00:00.000Z",
+    "team1": {
+      "code": "2K",
+      "display": "Runner-up Group K",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2L",
+      "display": "Runner-up Group L",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-02-r32-m84",
+    "num": 84,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-07-02T19:00:00.000Z",
+    "team1": {
+      "code": "1H",
+      "display": "Winner Group H",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2J",
+      "display": "Runner-up Group J",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-02-r32-m85",
+    "num": 85,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-07-03T03:00:00.000Z",
+    "team1": {
+      "code": "1B",
+      "display": "Winner Group B",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3E/F/G/I/J",
+      "display": "3rd Place Group E/F/G/I/J",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-03-r32-m86",
+    "num": 86,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "miami",
+    "kickoffUtc": "2026-07-03T22:00:00.000Z",
+    "team1": {
+      "code": "1J",
+      "display": "Winner Group J",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2H",
+      "display": "Runner-up Group H",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-03-r32-m87",
+    "num": 87,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "kansas-city",
+    "kickoffUtc": "2026-07-04T01:30:00.000Z",
+    "team1": {
+      "code": "1K",
+      "display": "Winner Group K",
+      "resolved": false
+    },
+    "team2": {
+      "code": "3D/E/I/J/L",
+      "display": "3rd Place Group D/E/I/J/L",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-03-r32-m88",
+    "num": 88,
+    "stage": "knockout",
+    "round": "Round of 32",
+    "group": null,
+    "venueId": "dallas",
+    "kickoffUtc": "2026-07-03T18:00:00.000Z",
+    "team1": {
+      "code": "2D",
+      "display": "Runner-up Group D",
+      "resolved": false
+    },
+    "team2": {
+      "code": "2G",
+      "display": "Runner-up Group G",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-04-r16-m89",
+    "num": 89,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "philadelphia",
+    "kickoffUtc": "2026-07-04T21:00:00.000Z",
+    "team1": {
+      "code": "W74",
+      "display": "Winner of Match 74",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W77",
+      "display": "Winner of Match 77",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-04-r16-m90",
+    "num": 90,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "houston",
+    "kickoffUtc": "2026-07-04T17:00:00.000Z",
+    "team1": {
+      "code": "W73",
+      "display": "Winner of Match 73",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W75",
+      "display": "Winner of Match 75",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-05-r16-m91",
+    "num": 91,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-07-05T20:00:00.000Z",
+    "team1": {
+      "code": "W76",
+      "display": "Winner of Match 76",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W78",
+      "display": "Winner of Match 78",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-05-r16-m92",
+    "num": 92,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "mexico-city",
+    "kickoffUtc": "2026-07-06T00:00:00.000Z",
+    "team1": {
+      "code": "W79",
+      "display": "Winner of Match 79",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W80",
+      "display": "Winner of Match 80",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-06-r16-m93",
+    "num": 93,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "dallas",
+    "kickoffUtc": "2026-07-06T19:00:00.000Z",
+    "team1": {
+      "code": "W83",
+      "display": "Winner of Match 83",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W84",
+      "display": "Winner of Match 84",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-06-r16-m94",
+    "num": 94,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "seattle",
+    "kickoffUtc": "2026-07-07T00:00:00.000Z",
+    "team1": {
+      "code": "W81",
+      "display": "Winner of Match 81",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W82",
+      "display": "Winner of Match 82",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-07-r16-m95",
+    "num": 95,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-07-07T16:00:00.000Z",
+    "team1": {
+      "code": "W86",
+      "display": "Winner of Match 86",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W88",
+      "display": "Winner of Match 88",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-07-r16-m96",
+    "num": 96,
+    "stage": "knockout",
+    "round": "Round of 16",
+    "group": null,
+    "venueId": "vancouver",
+    "kickoffUtc": "2026-07-07T20:00:00.000Z",
+    "team1": {
+      "code": "W85",
+      "display": "Winner of Match 85",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W87",
+      "display": "Winner of Match 87",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-09-qf-m97",
+    "num": 97,
+    "stage": "knockout",
+    "round": "Quarter-final",
+    "group": null,
+    "venueId": "boston",
+    "kickoffUtc": "2026-07-09T20:00:00.000Z",
+    "team1": {
+      "code": "W89",
+      "display": "Winner of Match 89",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W90",
+      "display": "Winner of Match 90",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-10-qf-m98",
+    "num": 98,
+    "stage": "knockout",
+    "round": "Quarter-final",
+    "group": null,
+    "venueId": "los-angeles",
+    "kickoffUtc": "2026-07-10T19:00:00.000Z",
+    "team1": {
+      "code": "W93",
+      "display": "Winner of Match 93",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W94",
+      "display": "Winner of Match 94",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-11-qf-m99",
+    "num": 99,
+    "stage": "knockout",
+    "round": "Quarter-final",
+    "group": null,
+    "venueId": "miami",
+    "kickoffUtc": "2026-07-11T21:00:00.000Z",
+    "team1": {
+      "code": "W91",
+      "display": "Winner of Match 91",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W92",
+      "display": "Winner of Match 92",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-11-qf-m100",
+    "num": 100,
+    "stage": "knockout",
+    "round": "Quarter-final",
+    "group": null,
+    "venueId": "kansas-city",
+    "kickoffUtc": "2026-07-12T01:00:00.000Z",
+    "team1": {
+      "code": "W95",
+      "display": "Winner of Match 95",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W96",
+      "display": "Winner of Match 96",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-14-sf-m101",
+    "num": 101,
+    "stage": "knockout",
+    "round": "Semi-final",
+    "group": null,
+    "venueId": "dallas",
+    "kickoffUtc": "2026-07-14T19:00:00.000Z",
+    "team1": {
+      "code": "W97",
+      "display": "Winner of Match 97",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W98",
+      "display": "Winner of Match 98",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-15-sf-m102",
+    "num": 102,
+    "stage": "knockout",
+    "round": "Semi-final",
+    "group": null,
+    "venueId": "atlanta",
+    "kickoffUtc": "2026-07-15T19:00:00.000Z",
+    "team1": {
+      "code": "W99",
+      "display": "Winner of Match 99",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W100",
+      "display": "Winner of Match 100",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-18-3rd-m103",
+    "num": 103,
+    "stage": "knockout",
+    "round": "Match for third place",
+    "group": null,
+    "venueId": "miami",
+    "kickoffUtc": "2026-07-18T21:00:00.000Z",
+    "team1": {
+      "code": "L101",
+      "display": "Loser of Match 101",
+      "resolved": false
+    },
+    "team2": {
+      "code": "L102",
+      "display": "Loser of Match 102",
+      "resolved": false
+    }
+  },
+  {
+    "id": "2026-07-19-final-m104",
+    "num": 104,
+    "stage": "knockout",
+    "round": "Final",
+    "group": null,
+    "venueId": "new-york-new-jersey",
+    "kickoffUtc": "2026-07-19T19:00:00.000Z",
+    "team1": {
+      "code": "W101",
+      "display": "Winner of Match 101",
+      "resolved": false
+    },
+    "team2": {
+      "code": "W102",
+      "display": "Winner of Match 102",
+      "resolved": false
+    }
+  }
+]

@@ -1,65 +1,77 @@
-import Image from "next/image";
+import { Suspense } from "react";
+import { HomeTabs } from "@/components/home/home-tabs";
+import { TodaysMatches } from "@/components/home/todays-matches";
+import { HostProvider } from "@/components/host-provider";
+import { getHostState, type HostState } from "@/lib/host";
+import { getCounts } from "@/lib/interest";
+import {
+  getAllMatches,
+  getAllVenues,
+  getGroups,
+  getKnockoutRounds,
+} from "@/lib/matches";
+import type { InterestCounts, MatchWeather } from "@/lib/types";
+import { getWeatherForMatches } from "@/lib/weather";
 
-export default function Home() {
+export default async function Home() {
+  const matches = getAllMatches();
+  const venues = getAllVenues();
+  const groups = getGroups();
+  const knockoutRounds = getKnockoutRounds();
+
+  // Seed interest counts server-side. Guard so a missing/unreachable DB (e.g.
+  // local dev or build before Neon is provisioned) degrades to {} rather than
+  // crashing the page or build — mirrors the detail page's getInterest guard.
+  let initialCounts: InterestCounts = {};
+  try {
+    initialCounts = await getCounts();
+  } catch {
+    // No DATABASE_URL yet, or DB unreachable — render with empty counts.
+  }
+
+  // Resolve Oslo weather for every match so the calendar squares can show it
+  // without a per-match round-trip. In-horizon dates share one cached forecast
+  // fetch; the rest are instant climate-normal lookups. Never let weather
+  // failures break the page.
+  let weather: Record<string, MatchWeather> = {};
+  try {
+    weather = await getWeatherForMatches(matches);
+  } catch {
+    // Open-Meteo unreachable — render the calendar without weather chips.
+  }
+
+  // Seed hosting status + comments server-side (degrades to empty without a DB).
+  let hostState: HostState = { status: {}, comments: {} };
+  try {
+    hostState = await getHostState();
+  } catch {
+    // No DATABASE_URL yet — render with defaults (all "available", no notes).
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mb-8 flex flex-col gap-2">
+        <h1 className="font-heading text-xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
+          🇳🇴 TMG23A World Cup 2026 🇳🇴
+        </h1>
+        <p className="text-muted-foreground">Heeeelvete vi skal til VM!!</p>
+      </div>
+      <HostProvider
+        initialStatus={hostState.status}
+        initialComments={hostState.comments}
+      >
+        <TodaysMatches matches={matches} venues={venues} weather={weather} />
+        <Suspense>
+          <HomeTabs
+            matches={matches}
+            venues={venues}
+            groups={groups}
+            knockoutRounds={knockoutRounds}
+            initialCounts={initialCounts}
+            weather={weather}
+          />
+        </Suspense>
+      </HostProvider>
+    </main>
   );
 }
