@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { sql } from "@/lib/db";
-import { getInterest } from "@/lib/interest";
+import { getInterest, removeInterest } from "@/lib/interest";
 import type { InterestResponse } from "@/lib/types";
-import { matchIdSchema, rsvpBody } from "@/lib/validation";
+import { matchIdSchema, revokeBody, rsvpBody } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -73,5 +73,33 @@ export async function POST(request: Request): Promise<Response> {
     deduped,
   };
 
+  return NextResponse.json(response, { headers: NO_STORE });
+}
+
+// DELETE /api/interest — revoke this device's RSVP, read back the list.
+export async function DELETE(request: Request): Promise<Response> {
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid JSON body" },
+      { status: 400, headers: NO_STORE },
+    );
+  }
+
+  const parsed = revokeBody.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      {
+        error: "Validation failed",
+        fields: parsed.error.flatten().fieldErrors,
+      },
+      { status: 400, headers: NO_STORE },
+    );
+  }
+
+  const { matchId, playerId } = parsed.data;
+  const response = await removeInterest(matchId, playerId);
   return NextResponse.json(response, { headers: NO_STORE });
 }

@@ -30,7 +30,14 @@ export function WorldCupStandings({ data }: StandingsProps) {
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {groupStandings.map(({ group, rows }) => (
-          <Card key={group} size="sm">
+          <Card
+            key={group}
+            size="sm"
+            className={cn(
+              rows.some((r) => r.code === "NOR") &&
+                "ring-2 ring-red-600/60 dark:ring-red-500/55",
+            )}
+          >
             <CardHeader>
               <CardTitle>Group {group}</CardTitle>
             </CardHeader>
@@ -55,8 +62,15 @@ export function WorldCupStandings({ data }: StandingsProps) {
                 <tbody>
                   {rows.map((row, i) => {
                     const advances = i < 2;
+                    const isNorway = row.code === "NOR";
                     return (
-                      <tr key={row.name} className="border-b last:border-b-0">
+                      <tr
+                        key={row.name}
+                        className={cn(
+                          "border-b last:border-b-0",
+                          isNorway && "bg-red-500/5",
+                        )}
+                      >
                         <td className="py-1.5 pr-1">
                           <span
                             className={cn(

@@ -1,4 +1,9 @@
 import { CalendarDays, Clock, MapPin } from "lucide-react";
+import {
+  isNorwayMatch,
+  NORWAY_RING,
+  NorwayFlagWash,
+} from "@/components/norway-flag";
 import { TeamFlag } from "@/components/team-flag";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -8,6 +13,7 @@ import {
   formatTime,
 } from "@/lib/time";
 import type { Match, TeamRef, Venue } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface MatchHeroProps {
   match: Match;
@@ -35,21 +41,27 @@ export function MatchHero({ match, venue }: MatchHeroProps) {
       : match.round;
 
   return (
-    <section className="flex flex-col gap-6 rounded-4xl bg-card p-6 shadow-md ring-1 ring-foreground/5 sm:p-8 dark:ring-foreground/10">
-      <div className="flex flex-wrap items-center gap-2">
+    <section
+      className={cn(
+        "relative flex flex-col gap-6 overflow-hidden rounded-4xl bg-card p-6 shadow-md ring-1 ring-foreground/5 sm:p-8 dark:ring-foreground/10",
+        isNorwayMatch(match) && NORWAY_RING,
+      )}
+    >
+      {isNorwayMatch(match) ? <NorwayFlagWash /> : null}
+      <div className="relative flex flex-wrap items-center gap-2">
         <Badge variant="secondary">{roundLabel}</Badge>
         {roundLabel !== match.round ? (
           <Badge variant="ghost">{match.round}</Badge>
         ) : null}
       </div>
 
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+      <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4">
         <TeamName team={match.team1} />
         <span className="text-lg font-medium text-muted-foreground">vs</span>
         <TeamName team={match.team2} />
       </div>
 
-      <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
+      <dl className="relative grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
         <div className="flex items-center gap-2">
           <CalendarDays className="size-4 shrink-0 text-muted-foreground" />
           <dd>{formatDate(match.kickoffUtc, DISPLAY_TZ)}</dd>

@@ -1,11 +1,17 @@
 import { CalendarDays, MapPin } from "lucide-react";
 import Link from "next/link";
 import { HostStatusDot } from "@/components/host-status";
+import {
+  isNorwayMatch,
+  NORWAY_RING,
+  NorwayFlagWash,
+} from "@/components/norway-flag";
 import { TeamFlag } from "@/components/team-flag";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { DISPLAY_TZ, formatDate, formatTime } from "@/lib/time";
 import type { Match, TeamRef, Venue } from "@/lib/types";
+import { cn } from "@/lib/utils";
 import { InterestBadge } from "./interest-badge";
 
 interface MatchCardProps {
@@ -35,6 +41,7 @@ function TeamRow({ team }: { team: TeamRef }) {
 
 export function MatchCard({ match, venue }: MatchCardProps) {
   const unresolved = !match.team1.resolved || !match.team2.resolved;
+  const isNorway = isNorwayMatch(match);
 
   return (
     <Link
@@ -43,9 +50,13 @@ export function MatchCard({ match, venue }: MatchCardProps) {
     >
       <Card
         size="sm"
-        className="h-full transition-shadow hover:shadow-lg hover:border-foreground/20"
+        className={cn(
+          "relative h-full transition-shadow hover:shadow-lg hover:border-foreground/20",
+          isNorway && NORWAY_RING,
+        )}
       >
-        <CardHeader>
+        {isNorway ? <NorwayFlagWash /> : null}
+        <CardHeader className="relative">
           <div className="flex items-center justify-between gap-2">
             <Badge variant="secondary">{roundLabel(match)}</Badge>
             <div className="flex items-center gap-2">
@@ -64,7 +75,7 @@ export function MatchCard({ match, venue }: MatchCardProps) {
             <TeamRow team={match.team2} />
           </div>
         </CardHeader>
-        <CardContent className="flex flex-col gap-1.5 text-sm text-muted-foreground">
+        <CardContent className="relative flex flex-col gap-1.5 text-sm text-muted-foreground">
           <div className="flex items-center gap-1.5">
             <CalendarDays className="size-4 shrink-0" />
             <span>

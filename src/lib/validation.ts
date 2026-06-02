@@ -45,6 +45,12 @@ export const rsvpBody = z.object({
   playerId: playerIdSchema,
 });
 
+/** Revoke an RSVP (DELETE /api/interest) — keyed by match + device. */
+export const revokeBody = z.object({
+  matchId: matchIdSchema,
+  playerId: playerIdSchema,
+});
+
 /** Register/rename a device player (POST /api/player). */
 export const playerBody = z.object({
   playerId: playerIdSchema,

@@ -32,6 +32,29 @@ export interface LeaderboardRow {
   pending: number; // predictions on matches not yet played
   accuracy: number; // 0–1 over settled
   streak: number; // current trailing run of correct settled picks (chrono order)
+  avgOdds: number | null; // mean odds of priced picks (higher = riskier)
+  card: PlayerCard; // per-player risk/profit detail for the row's modal
+}
+
+/** One of a player's picks, enriched for their detail card. */
+export interface PredictionDetail {
+  matchId: string;
+  match: string; // "Norway v Brazil"
+  kickoffUtc: string;
+  pickLabel: string; // picked team's name, or "Draw"
+  odds: number | null;
+  status: "pending" | "correct" | "wrong";
+  profit: number | null; // settled only: net NOK on a flat 100 NOK stake
+}
+
+/** Per-player risk/profit breakdown shown when a leaderboard row is opened. */
+export interface PlayerCard {
+  avgOdds: number | null; // mean snapshotted odds across priced picks (risk)
+  hasOdds: boolean; // false in flat-points mode → hide the money figures
+  biggestWin: { odds: number; match: string; pickLabel: string } | null;
+  staked: number; // 100 NOK × settled picks
+  profit: number; // net NOK if they'd staked 100 on every settled pick
+  predictions: PredictionDetail[]; // chronological (kickoff asc)
 }
 
 export interface UpsertResult {
@@ -113,6 +136,12 @@ function outcomeFor(live: LiveMatch, ourTeam1Code: string): Pick | null {
   return team1Wins ? "away" : "home";
 }
 
+/** Display name of a picked outcome, oriented to our fixture. */
+function pickLabel(m: Match, pick: Pick): string {
+  if (pick === "draw") return "Draw";
+  return pick === "home" ? m.team1.display : m.team2.display;
+}
+
 /** Map our matchId -> settled outcome, from live results (group + knockout). */
 function buildOutcomeMap(
   matches: Match[],
@@ -158,6 +187,7 @@ export async function getLeaderboard(): Promise<LeaderboardRow[]> {
 
   const matches = getAllMatches();
   const kickoff = new Map(matches.map((m) => [m.id, m.kickoffUtc]));
+  const matchById = new Map(matches.map((m) => [m.id, m]));
   const wc = await getWorldCupData();
   const outcomes = buildOutcomeMap(matches, wc.matches);
 
@@ -167,7 +197,8 @@ export async function getLeaderboard(): Promise<LeaderboardRow[]> {
     correct: number;
     incorrect: number;
     pending: number;
-    settledPicks: { kickoffUtc: string; correct: boolean }[];
+    oddsValues: number[]; // priced picks, for the average-odds risk metric
+    picks: PredictionDetail[]; // every pick, enriched (for the detail card)
   }
   const players = new Map<string, Acc>();
 
@@ -180,22 +211,48 @@ export async function getLeaderboard(): Promise<LeaderboardRow[]> {
         correct: 0,
         incorrect: 0,
         pending: 0,
-        settledPicks: [],
+        oddsValues: [],
+        picks: [],
       } satisfies Acc);
     players.set(r.player_id, acc);
     acc.name = r.name;
 
+    const m = matchById.get(r.match_id);
+    const odds = r.odds == null ? null : Number(r.odds);
+    if (odds != null) acc.oddsValues.push(odds);
+    const ko = kickoff.get(r.match_id) ?? "";
+    const label = m ? `${m.team1.display} v ${m.team2.display}` : r.match_id;
+    const pLabel = m ? pickLabel(m, r.pick) : r.pick;
+
     const outcome = outcomes.get(r.match_id);
     if (!outcome) {
       acc.pending++;
+      acc.picks.push({
+        matchId: r.match_id,
+        match: label,
+        kickoffUtc: ko,
+        pickLabel: pLabel,
+        odds,
+        status: "pending",
+        profit: null,
+      });
       continue;
     }
     const correct = r.pick === outcome;
-    const ko = kickoff.get(r.match_id) ?? "";
-    acc.settledPicks.push({ kickoffUtc: ko, correct });
+    // Flat 100 NOK stake: a correct pick returns 100 × odds (1 if unpriced).
+    const profit = correct ? 100 * (odds ?? 1) - 100 : -100;
+    acc.picks.push({
+      matchId: r.match_id,
+      match: label,
+      kickoffUtc: ko,
+      pickLabel: pLabel,
+      odds,
+      status: correct ? "correct" : "wrong",
+      profit,
+    });
     if (correct) {
       acc.correct++;
-      acc.points += r.odds == null ? 1 : Number(r.odds);
+      acc.points += odds ?? 1;
     } else {
       acc.incorrect++;
     }
@@ -204,15 +261,51 @@ export async function getLeaderboard(): Promise<LeaderboardRow[]> {
   const board: LeaderboardRow[] = [];
   for (const [playerId, acc] of players) {
     const settled = acc.correct + acc.incorrect;
-    // Current streak: trailing run of correct picks in chronological order.
-    const chrono = [...acc.settledPicks].sort((a, b) =>
+    const predictions = [...acc.picks].sort((a, b) =>
       a.kickoffUtc.localeCompare(b.kickoffUtc),
     );
+    // Current streak: trailing run of correct picks in chronological order.
     let streak = 0;
-    for (let i = chrono.length - 1; i >= 0; i--) {
-      if (chrono[i].correct) streak++;
+    for (let i = predictions.length - 1; i >= 0; i--) {
+      const p = predictions[i];
+      if (p.status === "pending") continue;
+      if (p.status === "correct") streak++;
       else break;
     }
+    const avgOdds = acc.oddsValues.length
+      ? Math.round(
+          (acc.oddsValues.reduce((s, v) => s + v, 0) / acc.oddsValues.length) *
+            100,
+        ) / 100
+      : null;
+    const biggestWin = predictions.reduce<PredictionDetail | null>(
+      (best, p) =>
+        p.status === "correct" &&
+        p.odds != null &&
+        (best == null || p.odds > (best.odds ?? 0))
+          ? p
+          : best,
+      null,
+    );
+    const settledPicks = predictions.filter((p) => p.status !== "pending");
+    const profit = Math.round(
+      settledPicks.reduce((s, p) => s + (p.profit ?? 0), 0),
+    );
+    const card: PlayerCard = {
+      avgOdds,
+      hasOdds: acc.oddsValues.length > 0,
+      biggestWin:
+        biggestWin && biggestWin.odds != null
+          ? {
+              odds: biggestWin.odds,
+              match: biggestWin.match,
+              pickLabel: biggestWin.pickLabel,
+            }
+          : null,
+      staked: settledPicks.length * 100,
+      profit,
+      predictions,
+    };
     board.push({
       playerId,
       name: acc.name,
@@ -223,6 +316,8 @@ export async function getLeaderboard(): Promise<LeaderboardRow[]> {
       pending: acc.pending,
       accuracy: settled ? acc.correct / settled : 0,
       streak,
+      avgOdds,
+      card,
     });
   }
   return board.sort(

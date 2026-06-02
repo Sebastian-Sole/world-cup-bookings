@@ -52,9 +52,13 @@ export function RsvpPanel({
   useEffect(() => setMounted(true), []);
   const submitted = mounted && submittedStored;
   const applyOptimistic = useInterestStore((s) => s.applyOptimistic);
+  const applyOptimisticRemove = useInterestStore(
+    (s) => s.applyOptimisticRemove,
+  );
   const reconcile = useInterestStore((s) => s.reconcile);
   const rollback = useInterestStore((s) => s.rollback);
   const markSubmitted = useInterestStore((s) => s.markSubmitted);
+  const unmarkSubmitted = useInterestStore((s) => s.unmarkSubmitted);
 
   // Display = server names + any still-pending optimistic names.
   const displayNames = [...names, ...(optimisticEntry?.names ?? [])];
@@ -96,6 +100,37 @@ export function RsvpPanel({
     }
   }
 
+  async function onRevoke() {
+    if (!ready || !player) return;
+    setSubmitting(true);
+    applyOptimisticRemove(matchId);
+
+    try {
+      const res = await fetch("/api/interest", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ matchId, playerId: player.id }),
+      });
+
+      if (!res.ok) throw new Error(`Revoke failed: ${res.status}`);
+
+      const data = (await res.json()) as InterestResponse;
+
+      // Adopt server truth, clear the optimistic delta, drop the device flag so
+      // the panel returns to the "I'm watching" state.
+      setNames(data.names);
+      setCount(data.count);
+      reconcile(matchId, data.names, data.count);
+      unmarkSubmitted(matchId);
+      toast.success("You're off the list");
+    } catch {
+      rollback(matchId);
+      toast.error("Couldn't update your RSVP. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -106,9 +141,20 @@ export function RsvpPanel({
       </CardHeader>
       <CardContent className="flex flex-col gap-5">
         {submitted ? (
-          <Button type="button" disabled className="w-full">
-            You&apos;re in
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button type="button" disabled className="w-full">
+              You&apos;re in
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={onRevoke}
+              disabled={submitting || !ready || !player}
+              className="w-full text-muted-foreground"
+            >
+              {submitting ? "Updating…" : "Can't make it? Leave"}
+            </Button>
+          </div>
         ) : (
           <Button
             type="button"

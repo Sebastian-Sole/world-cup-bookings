@@ -79,6 +79,25 @@ export async function getMembers(): Promise<Member[]> {
   return rows.map((r) => ({ name: r.name, code: r.code }));
 }
 
+/**
+ * Distinct player names (NO codes) for the identity gate's "Is this you?"
+ * recognition list. Names are non-sensitive within this private group; codes
+ * stay admin-only (see getMembers). Returned case-insensitively sorted.
+ */
+export async function getPlayerNames(): Promise<string[]> {
+  const rows = (await sql`
+    SELECT name FROM players ORDER BY lower(name)
+  `) as { name: string }[];
+  const seen = new Set<string>();
+  const names: string[] = [];
+  for (const r of rows) {
+    if (seen.has(r.name)) continue;
+    seen.add(r.name);
+    names.push(r.name);
+  }
+  return names;
+}
+
 export interface PlayerIdentity {
   id: string;
   name: string;

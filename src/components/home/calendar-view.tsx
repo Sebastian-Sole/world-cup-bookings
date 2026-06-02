@@ -1,7 +1,13 @@
 "use client";
 
 import { format } from "date-fns";
-import { ChevronLeft, ChevronRight, Droplets, icons } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Droplets,
+  icons,
+  Users,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { HostStatusDot } from "@/components/host-status";
@@ -318,13 +324,17 @@ function MatchCell({
   const counts = useCounts();
   const { match } = dayMatch;
   const count = counts[match.id] ?? 0;
+  const isNorway = match.team1.code === "NOR" || match.team2.code === "NOR";
 
   return (
     <button
       type="button"
       onClick={() => router.push(`/match/${match.id}`)}
       title={`${match.team1.display} v ${match.team2.display} · ${formatTime(match.kickoffUtc, DISPLAY_TZ)} CEST`}
-      className="relative flex w-full flex-col gap-1 rounded-lg border bg-background p-1.5 text-left outline-none transition-colors hover:border-foreground/30 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/40"
+      className={cn(
+        "relative flex w-full flex-col gap-1 rounded-lg border bg-background p-1.5 text-left outline-none transition-colors hover:border-foreground/30 hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/40",
+        isNorway && "border-red-600/50 ring-1 ring-red-600/40",
+      )}
     >
       <HostStatusDot
         matchId={match.id}
@@ -340,15 +350,16 @@ function MatchCell({
       </span>
       <div className="flex items-center justify-between gap-1 text-[0.625rem] text-muted-foreground">
         <WeatherInline weather={weather} />
-        <span className="flex shrink-0 items-center gap-1.5">
-          {count > 0 ? (
-            <span className="font-medium text-foreground">{count} going</span>
-          ) : null}
-          <time className="tabular-nums">
-            {formatTime(match.kickoffUtc, DISPLAY_TZ)}
-          </time>
-        </span>
+        <time className="shrink-0 tabular-nums">
+          {formatTime(match.kickoffUtc, DISPLAY_TZ)}
+        </time>
       </div>
+      {count > 0 ? (
+        <span className="flex items-center gap-1 text-[0.625rem] font-medium text-foreground">
+          <Users className="size-3 shrink-0" aria-hidden />
+          {count} going
+        </span>
+      ) : null}
     </button>
   );
 }

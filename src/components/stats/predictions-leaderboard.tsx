@@ -2,8 +2,10 @@
 
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useMemo, useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import type { LeaderboardRow } from "@/lib/predictions";
 import { cn } from "@/lib/utils";
+import { PlayerCardBody } from "./player-card-dialog";
 
 /** Medal for the top three ranks; otherwise the numeric rank. */
 const MEDALS = ["🥇", "🥈", "🥉"] as const;
@@ -14,7 +16,8 @@ type SortKey =
   | "correct"
   | "incorrect"
   | "accuracy"
-  | "streak";
+  | "streak"
+  | "risk";
 type SortDir = "asc" | "desc";
 
 /** A row plus its rank in the canonical points-desc ordering. */
@@ -37,6 +40,9 @@ function compareBy(key: SortKey, a: LeaderboardRow, b: LeaderboardRow): number {
       return a.accuracy - b.accuracy || a.settled - b.settled;
     case "streak":
       return a.streak - b.streak || a.points - b.points;
+    case "risk":
+      // Unpriced players (no odds) sort below everyone with a risk score.
+      return (a.avgOdds ?? -1) - (b.avgOdds ?? -1) || a.points - b.points;
   }
 }
 
@@ -126,6 +132,17 @@ function AccuracyCell({ row }: { row: LeaderboardRow }) {
   );
 }
 
+function RiskCell({ row }: { row: LeaderboardRow }) {
+  if (row.avgOdds == null) {
+    return <span className="text-muted-foreground">—</span>;
+  }
+  return (
+    <span className="tabular-nums" title="Average odds of their picks">
+      {row.avgOdds.toFixed(2)}
+    </span>
+  );
+}
+
 function PendingNote({ pending }: { pending: number }) {
   if (pending <= 0) return null;
   return (
@@ -139,6 +156,7 @@ function PendingNote({ pending }: { pending: number }) {
 export function PredictionsLeaderboard({ rows }: { rows: LeaderboardRow[] }) {
   const [sortKey, setSortKey] = useState<SortKey>("points");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [selected, setSelected] = useState<RankedRow | null>(null);
 
   // Canonical rank is the incoming points-desc position (rows is pre-sorted).
   const ranked = useMemo<RankedRow[]>(
@@ -228,6 +246,16 @@ export function PredictionsLeaderboard({ rows }: { rows: LeaderboardRow[] }) {
         </div>
         <div className="w-16">
           <SortHeader
+            label="Risk"
+            sortKey="risk"
+            active={sortKey === "risk"}
+            dir={sortDir}
+            align="right"
+            onSort={handleSort}
+          />
+        </div>
+        <div className="w-16">
+          <SortHeader
             label="Streak"
             sortKey="streak"
             active={sortKey === "streak"}
@@ -240,51 +268,76 @@ export function PredictionsLeaderboard({ rows }: { rows: LeaderboardRow[] }) {
 
       <ul className="divide-y">
         {visible.map((r) => (
-          <li key={r.playerId} className="px-5 py-3">
-            {/* sm+ : aligned table row */}
-            <div className="hidden items-center gap-4 sm:flex">
-              <RankBadge rank={r.rank} />
-              <span className="min-w-0 flex-1 truncate font-medium">
-                {r.name}
-              </span>
-              <span className="w-20 text-right font-heading text-lg font-bold tabular-nums">
-                {r.points}
-              </span>
-              <span className="w-16 text-right tabular-nums">{r.correct}</span>
-              <span className="w-16 text-right tabular-nums text-muted-foreground">
-                {r.incorrect}
-              </span>
-              <span className="w-20 text-right">
-                <AccuracyCell row={r} />
-              </span>
-              <span className="w-16 text-right">
-                <StreakCell streak={r.streak} />
-              </span>
-            </div>
-
-            {/* mobile : stacked row */}
-            <div className="flex items-center gap-3 sm:hidden">
-              <RankBadge rank={r.rank} />
-              <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                <span className="truncate font-medium">{r.name}</span>
-                <span className="text-xs text-muted-foreground tabular-nums">
-                  {r.correct}–{r.incorrect}
-                  <PendingNote pending={r.pending} /> · <AccuracyCell row={r} />{" "}
-                  · <StreakCell streak={r.streak} />
+          <li key={r.playerId}>
+            <button
+              type="button"
+              onClick={() => setSelected(r)}
+              aria-label={`Open ${r.name}'s prediction card`}
+              className="w-full cursor-pointer px-5 py-3 text-left transition-colors hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-hidden"
+            >
+              {/* sm+ : aligned table row */}
+              <div className="hidden items-center gap-4 sm:flex">
+                <RankBadge rank={r.rank} />
+                <span className="min-w-0 flex-1 truncate font-medium">
+                  {r.name}
                 </span>
-              </div>
-              <div className="flex shrink-0 flex-col items-center">
-                <span className="font-heading text-lg font-bold tabular-nums">
+                <span className="w-20 text-right font-heading text-lg font-bold tabular-nums">
                   {r.points}
                 </span>
-                <span className="text-[0.65rem] tracking-wide text-muted-foreground uppercase">
-                  Points
+                <span className="w-16 text-right tabular-nums">
+                  {r.correct}
+                </span>
+                <span className="w-16 text-right tabular-nums text-muted-foreground">
+                  {r.incorrect}
+                </span>
+                <span className="w-20 text-right">
+                  <AccuracyCell row={r} />
+                </span>
+                <span className="w-16 text-right">
+                  <RiskCell row={r} />
+                </span>
+                <span className="w-16 text-right">
+                  <StreakCell streak={r.streak} />
                 </span>
               </div>
-            </div>
+
+              {/* mobile : stacked row */}
+              <div className="flex items-center gap-3 sm:hidden">
+                <RankBadge rank={r.rank} />
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <span className="truncate font-medium">{r.name}</span>
+                  <span className="text-xs text-muted-foreground tabular-nums">
+                    {r.correct}–{r.incorrect}
+                    <PendingNote pending={r.pending} /> ·{" "}
+                    <AccuracyCell row={r} />
+                    {r.avgOdds != null ? ` · risk ${r.avgOdds.toFixed(2)}` : ""}{" "}
+                    · <StreakCell streak={r.streak} />
+                  </span>
+                </div>
+                <div className="flex shrink-0 flex-col items-center">
+                  <span className="font-heading text-lg font-bold tabular-nums">
+                    {r.points}
+                  </span>
+                  <span className="text-[0.65rem] tracking-wide text-muted-foreground uppercase">
+                    Points
+                  </span>
+                </div>
+              </div>
+            </button>
           </li>
         ))}
       </ul>
+
+      <Dialog
+        open={selected != null}
+        onOpenChange={(open) => {
+          if (!open) setSelected(null);
+        }}
+      >
+        <DialogContent>
+          {selected ? <PlayerCardBody row={selected} /> : null}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

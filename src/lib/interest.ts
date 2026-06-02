@@ -21,3 +21,20 @@ export async function getInterest(matchId: string): Promise<InterestResponse> {
   `) as { name: string }[];
   return { matchId, count: rows.length, names: rows.map((r) => r.name) };
 }
+
+/**
+ * Remove this device's RSVP for a match (revoke interest), then read back the
+ * remaining list in one batched HTTP transaction. Idempotent: deleting a row
+ * that isn't there is a no-op and still returns the current list.
+ */
+export async function removeInterest(
+  matchId: string,
+  playerId: string,
+): Promise<InterestResponse> {
+  const [, rows] = await sql.transaction([
+    sql`DELETE FROM rsvps WHERE match_id = ${matchId} AND player_id = ${playerId}`,
+    sql`SELECT name FROM rsvps WHERE match_id = ${matchId} ORDER BY created_at ASC`,
+  ]);
+  const names = (rows as { name: string }[]).map((r) => r.name);
+  return { matchId, count: names.length, names };
+}

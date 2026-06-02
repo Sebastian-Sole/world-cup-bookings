@@ -22,9 +22,11 @@ interface InterestState {
   optimistic: Record<string, OptimisticEntry>;
   submittedMatches: Record<string, true>;
   applyOptimistic: (matchId: string, name: string) => void;
+  applyOptimisticRemove: (matchId: string) => void;
   reconcile: (matchId: string, names: string[], count: number) => void;
   rollback: (matchId: string) => void;
   markSubmitted: (matchId: string) => void;
+  unmarkSubmitted: (matchId: string) => void;
 }
 
 export const useInterestStore = create<InterestState>()(
@@ -43,6 +45,20 @@ export const useInterestStore = create<InterestState>()(
                 delta: prev.delta + 1,
                 names: [...prev.names, name],
               },
+            },
+          };
+        }),
+
+      // Optimistic revoke: drop the displayed count by one immediately. Names
+      // shown in the panel come from server truth there, so we only nudge the
+      // shared delta (home badges) — reconcile clears it once DELETE returns.
+      applyOptimisticRemove: (matchId) =>
+        set((state) => {
+          const prev = state.optimistic[matchId] ?? { delta: 0, names: [] };
+          return {
+            optimistic: {
+              ...state.optimistic,
+              [matchId]: { delta: prev.delta - 1, names: prev.names },
             },
           };
         }),
@@ -68,6 +84,13 @@ export const useInterestStore = create<InterestState>()(
         set((state) => ({
           submittedMatches: { ...state.submittedMatches, [matchId]: true },
         })),
+
+      unmarkSubmitted: (matchId) =>
+        set((state) => {
+          if (!(matchId in state.submittedMatches)) return state;
+          const { [matchId]: _removed, ...rest } = state.submittedMatches;
+          return { submittedMatches: rest };
+        }),
     }),
     {
       name: "wc26-submitted",

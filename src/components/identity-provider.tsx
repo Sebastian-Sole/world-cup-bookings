@@ -173,7 +173,16 @@ function CodeReveal({ code, onDone }: { code: string; onDone: () => void }) {
   );
 }
 
-/** Required first-run gate: create a name, or link via an existing sync code. */
+/** Gate steps: recognise a returning member, confirm by code, create, or link. */
+type GateStep = "choose" | "confirm" | "new" | "link";
+
+/**
+ * Required first-run gate. Returning members (e.g. on a new device or a fresh
+ * deployment URL) are greeted with an "Is this you?" list of known names —
+ * picking one asks for the sync code to confirm, which links the existing
+ * identity instead of spawning a duplicate. New people create a name; anyone
+ * can fall back to entering a code directly.
+ */
 function NameGate({
   onCreate,
   onLink,
@@ -181,7 +190,10 @@ function NameGate({
   onCreate: (name: string) => void;
   onLink: (code: string) => Promise<boolean>;
 }) {
-  const [mode, setMode] = useState<"new" | "link">("new");
+  // null while the known-names fetch is in flight.
+  const [names, setNames] = useState<string[] | null>(null);
+  const [step, setStep] = useState<GateStep>("choose");
+  const [selectedName, setSelectedName] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
@@ -189,7 +201,6 @@ function NameGate({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inputRef.current?.focus();
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -197,93 +208,251 @@ function NameGate({
     };
   }, []);
 
-  async function submit() {
-    if (mode === "new") {
-      if (isValidName(name)) onCreate(name);
-      return;
-    }
+  // Load the recognition list. If nobody exists yet (or the lookup fails),
+  // there's no one to recognise — go straight to name creation.
+  useEffect(() => {
+    let active = true;
+    fetch("/api/players", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : { names: [] }))
+      .then((d: { names?: string[] }) => {
+        if (!active) return;
+        const list = Array.isArray(d.names) ? d.names : [];
+        setNames(list);
+        if (list.length === 0) setStep("new");
+      })
+      .catch(() => {
+        if (!active) return;
+        setNames([]);
+        setStep("new");
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  // Focus the relevant input whenever we land on a text-entry step.
+  useEffect(() => {
+    if (step !== "choose") inputRef.current?.focus();
+  }, [step]);
+
+  async function confirmCode() {
     setBusy(true);
     setError(null);
     const ok = await onLink(code);
     setBusy(false);
-    if (!ok) setError("No identity found for that code.");
+    if (!ok) setError("That code didn't match. Check it and try again.");
   }
+
+  function pick(picked: string) {
+    setSelectedName(picked);
+    setCode("");
+    setError(null);
+    setStep("confirm");
+  }
+
+  function backToChoose() {
+    setStep("choose");
+    setError(null);
+    setCode("");
+  }
+
+  const hasNames = (names?.length ?? 0) > 0;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 p-4 backdrop-blur-sm">
       <div className="w-full max-w-sm rounded-4xl border bg-card p-6 shadow-xl">
-        <h2 className="font-heading text-xl font-semibold tracking-tight">
-          Welcome! 🇳🇴
-        </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {mode === "new"
-            ? "What's your name? It's used for your RSVPs and predictions — set once on this device."
-            : "Used the app on another device? Enter your sync code to pick up your predictions here."}
-        </p>
-        <form
-          className="mt-4 flex flex-col gap-3"
-          onSubmit={(e) => {
-            e.preventDefault();
-            submit();
-          }}
-        >
-          {mode === "new" ? (
-            <Input
-              ref={inputRef}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Sebastian"
-              aria-label="Your name"
-              maxLength={40}
-            />
-          ) : (
-            <Input
-              ref={inputRef}
-              value={code}
-              onChange={(e) => {
-                setCode(e.target.value);
-                setError(null);
-              }}
-              placeholder="e.g. AB12-CD34"
-              aria-label="Sync code"
-              maxLength={20}
-              autoCapitalize="characters"
-            />
-          )}
-          {error ? <p className="text-sm text-destructive">{error}</p> : null}
-          {mode === "link" ? (
-            <p className="text-xs text-muted-foreground">
-              Forgot your code? Ask the group admin — they can look it up for
-              you.
+        {step === "choose" ? (
+          <>
+            <h2 className="font-heading text-xl font-semibold tracking-tight">
+              Welcome! 🇳🇴
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {names === null
+                ? "One sec…"
+                : hasNames
+                  ? "Is this you? Pick your name to sync your RSVPs and predictions."
+                  : "What's your name?"}
             </p>
-          ) : null}
-          <Button
-            type="submit"
-            disabled={
-              busy ||
-              (mode === "new" ? !isValidName(name) : code.trim().length < 4)
-            }
-            className="w-full"
-          >
-            {mode === "new"
-              ? "Continue"
-              : busy
-                ? "Linking…"
-                : "Sync this device"}
-          </Button>
-        </form>
-        <button
-          type="button"
-          onClick={() => {
-            setMode((m) => (m === "new" ? "link" : "new"));
-            setError(null);
-          }}
-          className="mt-3 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
-        >
-          {mode === "new"
-            ? "Already use this on another device? Enter a sync code"
-            : "New here? Create your name instead"}
-        </button>
+
+            {hasNames ? (
+              <ul className="mt-4 flex max-h-56 flex-col gap-1.5 overflow-y-auto">
+                {names?.map((n) => (
+                  <li key={n}>
+                    <button
+                      type="button"
+                      onClick={() => pick(n)}
+                      className="flex w-full items-center justify-between rounded-2xl border px-4 py-2.5 text-left text-sm font-medium transition-colors hover:border-foreground/30 hover:bg-muted"
+                    >
+                      <span className="truncate">{n}</span>
+                      <span className="text-xs text-muted-foreground">
+                        That&apos;s me
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            <div className="mt-4 flex flex-col gap-2">
+              <Button type="button" onClick={() => setStep("new")}>
+                {hasNames ? "I'm new here" : "Continue"}
+              </Button>
+              <button
+                type="button"
+                onClick={() => setStep("link")}
+                className="text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+              >
+                Have a sync code? Enter it directly
+              </button>
+            </div>
+          </>
+        ) : null}
+
+        {step === "confirm" ? (
+          <>
+            <h2 className="font-heading text-xl font-semibold tracking-tight">
+              Welcome back, {selectedName}! 👋
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Enter your sync code to confirm it&apos;s you. Find it next to
+              your name on your other device, or ask the group admin.
+            </p>
+            <form
+              className="mt-4 flex flex-col gap-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                confirmCode();
+              }}
+            >
+              <Input
+                ref={inputRef}
+                value={code}
+                onChange={(e) => {
+                  setCode(e.target.value);
+                  setError(null);
+                }}
+                placeholder="e.g. AB12-CD34"
+                aria-label="Sync code"
+                maxLength={20}
+                autoCapitalize="characters"
+              />
+              {error ? (
+                <p className="text-sm text-destructive">{error}</p>
+              ) : null}
+              <Button
+                type="submit"
+                disabled={busy || code.trim().length < 4}
+                className="w-full"
+              >
+                {busy ? "Confirming…" : "Confirm it's me"}
+              </Button>
+            </form>
+            <button
+              type="button"
+              onClick={backToChoose}
+              className="mt-3 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+            >
+              ← Not you? Go back
+            </button>
+          </>
+        ) : null}
+
+        {step === "new" ? (
+          <>
+            <h2 className="font-heading text-xl font-semibold tracking-tight">
+              Welcome! 🇳🇴
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              What&apos;s your name? It&apos;s used for your RSVPs and
+              predictions — set once on this device.
+            </p>
+            <form
+              className="mt-4 flex flex-col gap-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (isValidName(name)) onCreate(name);
+              }}
+            >
+              <Input
+                ref={inputRef}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="e.g. Sebastian"
+                aria-label="Your name"
+                maxLength={40}
+              />
+              <Button
+                type="submit"
+                disabled={!isValidName(name)}
+                className="w-full"
+              >
+                Continue
+              </Button>
+            </form>
+            {hasNames ? (
+              <button
+                type="button"
+                onClick={backToChoose}
+                className="mt-3 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+              >
+                ← Back
+              </button>
+            ) : null}
+          </>
+        ) : null}
+
+        {step === "link" ? (
+          <>
+            <h2 className="font-heading text-xl font-semibold tracking-tight">
+              Enter your sync code
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Used the app on another device? Enter your sync code to pick up
+              your predictions here.
+            </p>
+            <form
+              className="mt-4 flex flex-col gap-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                confirmCode();
+              }}
+            >
+              <Input
+                ref={inputRef}
+                value={code}
+                onChange={(e) => {
+                  setCode(e.target.value);
+                  setError(null);
+                }}
+                placeholder="e.g. AB12-CD34"
+                aria-label="Sync code"
+                maxLength={20}
+                autoCapitalize="characters"
+              />
+              {error ? (
+                <p className="text-sm text-destructive">{error}</p>
+              ) : null}
+              <p className="text-xs text-muted-foreground">
+                Forgot your code? Ask the group admin — they can look it up for
+                you.
+              </p>
+              <Button
+                type="submit"
+                disabled={busy || code.trim().length < 4}
+                className="w-full"
+              >
+                {busy ? "Linking…" : "Sync this device"}
+              </Button>
+            </form>
+            <button
+              type="button"
+              onClick={backToChoose}
+              className="mt-3 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+            >
+              ← Back
+            </button>
+          </>
+        ) : null}
       </div>
     </div>
   );
