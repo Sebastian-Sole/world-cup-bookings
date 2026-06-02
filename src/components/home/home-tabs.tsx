@@ -2,7 +2,7 @@
 
 import { CalendarDays, Eye, EyeOff, List } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { AdminControl, HostLegend } from "@/components/host-status";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { isNightKickoff } from "@/lib/time";
@@ -39,20 +39,23 @@ export function HomeTabs({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const view = normalizeView(searchParams.get("view"));
+  // Hide overnight kickoffs (Oslo 12am–8am) by default; "View hidden" reveals
+  // them. Kept in the URL (like `view`) so the state survives navigating into a
+  // match and back — browser back/forward restores the query string. A fresh
+  // visit to "/" has no param, so it still starts hidden.
+  const showHidden = searchParams.get("hidden") === "1";
 
-  // Remember the active view so the match detail page's "All matches" link can
-  // return here instead of always defaulting to the list.
+  // Remember the active view + hidden toggle so the match detail page's
+  // "All matches" link can return to the same place.
   useEffect(() => {
     try {
       localStorage.setItem("wc26-view", view);
+      localStorage.setItem("wc26-hidden", showHidden ? "1" : "0");
     } catch {
-      // localStorage unavailable (private mode) — back link falls back to calendar
+      // localStorage unavailable (private mode) — back link falls back to defaults
     }
-  }, [view]);
+  }, [view, showHidden]);
 
-  // Hide overnight kickoffs (Oslo 12am–8am) by default; "View hidden" reveals
-  // them. State is per-session (off on every visit, as requested).
-  const [showHidden, setShowHidden] = useState(false);
   const hiddenCount = useMemo(
     () => matches.filter((m) => isNightKickoff(m.kickoffUtc)).length,
     [matches],
@@ -74,6 +77,14 @@ export function HomeTabs({
     [router, pathname, searchParams],
   );
 
+  const toggleHidden = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (showHidden) params.delete("hidden");
+    else params.set("hidden", "1");
+    const qs = params.toString();
+    router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+  }, [router, pathname, searchParams, showHidden]);
+
   return (
     // One poller for the whole home page; both tabs read counts from context.
     <CountsProvider initialCounts={initialCounts}>
@@ -93,7 +104,7 @@ export function HomeTabs({
             {hiddenCount > 0 ? (
               <button
                 type="button"
-                onClick={() => setShowHidden((v) => !v)}
+                onClick={toggleHidden}
                 aria-pressed={showHidden}
                 title="Overnight kickoffs (Oslo 12am–8am) are hidden by default"
                 className={cn(

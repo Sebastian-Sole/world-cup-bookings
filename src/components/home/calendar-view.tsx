@@ -35,7 +35,7 @@ const MONTHS = [
   { year: 2026, month: 6, label: "July 2026" },
 ];
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 interface DayMatch {
   match: Match;
@@ -224,7 +224,8 @@ function MonthGrid({
   today: string;
   weather: Record<string, MatchWeather>;
 }) {
-  const firstWeekday = new Date(year, month, 1).getDay();
+  // getDay() is 0=Sun..6=Sat; shift so Monday is the first column (0=Mon..6=Sun).
+  const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const cells: (number | null)[] = [
     ...Array.from({ length: firstWeekday }, () => null),

@@ -205,6 +205,7 @@ interface ArchiveDaily {
   temperature_2m_max: (number | null)[];
   temperature_2m_min: (number | null)[];
   precipitation_sum: (number | null)[];
+  cloud_cover_mean: (number | null)[];
   weather_code: (number | null)[];
 }
 
@@ -216,18 +217,86 @@ function round1(n: number): number {
   return Math.round(n * 10) / 10;
 }
 
-function mode(xs: number[]): number {
-  const counts = new Map<number, number>();
-  for (const x of xs) counts.set(x, (counts.get(x) ?? 0) + 1);
-  let best = xs[0];
-  let bestN = -1;
-  for (const [val, n] of counts) {
-    if (n > bestN) {
-      best = val;
-      bestN = n;
-    }
+/**
+ * Derive a representative WMO weather code for a date's "typical conditions".
+ *
+ * We deliberately do NOT take the mode of Open-Meteo's daily `weather_code`:
+ * the daily code reports the *most significant* weather of the day, so a single
+ * cloudy or showery hour brands an otherwise sunny day "overcast" (3) or
+ * "rain" (61). Across many years that biases the mode hard toward overcast/rain
+ * — Oslo summers end up showing clouds and rain almost every day even when most
+ * days were dry and bright.
+ *
+ * Instead we reconstruct the typical sky from honest aggregates:
+ *  - if it rains on most years for this date (wet fraction ≥ 0.5), show a
+ *    precipitation code (snow when freezing, otherwise rain scaled by amount);
+ *  - otherwise it's a typically-dry day, so pick the sky from mean cloud cover
+ *    (clear → mainly clear → partly cloudy → overcast).
+ */
+function deriveWeatherCode(opts: {
+  meanCloudPct: number;
+  meanPrecipMm: number;
+  wetFraction: number;
+  meanTMaxC: number;
+}): number {
+  const { meanCloudPct, meanPrecipMm, wetFraction, meanTMaxC } = opts;
+  if (wetFraction >= 0.5) {
+    if (meanTMaxC < 1) return meanPrecipMm >= 5 ? 75 : 73; // snowfall
+    return meanPrecipMm >= 5 ? 63 : 61; // moderate / slight rain
   }
-  return best;
+  if (meanCloudPct < 25) return 0; // clear sky
+  if (meanCloudPct < 50) return 1; // mainly clear
+  if (meanCloudPct < 75) return 2; // partly cloudy
+  return 3; // overcast
+}
+
+interface DayBucket {
+  tMax: number[];
+  tMin: number[];
+  precip: number[];
+  cloud: number[];
+}
+
+/** Group an archive's daily rows into per-MM-DD sample buckets. */
+function bucketArchiveByMmDd(daily: ArchiveDaily): Map<string, DayBucket> {
+  const byMmDd = new Map<string, DayBucket>();
+  for (let j = 0; j < daily.time.length; j += 1) {
+    const mmdd = daily.time[j].slice(5, 10);
+    const tMax = daily.temperature_2m_max[j];
+    const tMin = daily.temperature_2m_min[j];
+    const precip = daily.precipitation_sum[j];
+    const cloud = daily.cloud_cover_mean[j];
+    if (tMax == null || tMin == null || precip == null || cloud == null)
+      continue;
+    if (!byMmDd.has(mmdd))
+      byMmDd.set(mmdd, { tMax: [], tMin: [], precip: [], cloud: [] });
+    const bucket = byMmDd.get(mmdd);
+    if (!bucket) continue;
+    bucket.tMax.push(tMax);
+    bucket.tMin.push(tMin);
+    bucket.precip.push(precip);
+    bucket.cloud.push(cloud);
+  }
+  return byMmDd;
+}
+
+/** Reduce a MM-DD sample bucket to its committed climate normal. */
+function bucketToNormal(bucket: DayBucket): ClimateNormal {
+  const meanTMaxC = mean(bucket.tMax);
+  const meanPrecipMm = mean(bucket.precip);
+  const wetFraction =
+    bucket.precip.filter((p) => p >= 1).length / bucket.precip.length;
+  return {
+    tMaxC: round1(meanTMaxC),
+    tMinC: round1(mean(bucket.tMin)),
+    precipMm: round1(meanPrecipMm),
+    weatherCode: deriveWeatherCode({
+      meanCloudPct: mean(bucket.cloud),
+      meanPrecipMm,
+      wetFraction,
+      meanTMaxC,
+    }),
+  };
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -237,7 +306,7 @@ async function fetchArchive(venue: Venue): Promise<ArchiveDaily> {
     `https://archive-api.open-meteo.com/v1/archive` +
     `?latitude=${venue.lat}&longitude=${venue.lng}` +
     `&start_date=2015-06-01&end_date=2024-07-31` +
-    `&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weather_code` +
+    `&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,cloud_cover_mean,weather_code` +
     `&timezone=${encodeURIComponent(venue.tz)}`;
   let lastStatus = "";
   for (let attempt = 0; attempt < 5; attempt += 1) {
@@ -375,30 +444,7 @@ async function main() {
   for (let i = 0; i < venuesWithMatches.length; i += 1) {
     const venue = venuesWithMatches[i];
     console.log(`Climate (${i + 1}/${venuesWithMatches.length}): ${venue.id}…`);
-    const daily = await fetchArchive(venue);
-
-    // group archive rows by MM-DD
-    const byMmDd = new Map<
-      string,
-      { tMax: number[]; tMin: number[]; precip: number[]; wcode: number[] }
-    >();
-    for (let j = 0; j < daily.time.length; j += 1) {
-      const mmdd = daily.time[j].slice(5, 10);
-      const tMax = daily.temperature_2m_max[j];
-      const tMin = daily.temperature_2m_min[j];
-      const precip = daily.precipitation_sum[j];
-      const wcode = daily.weather_code[j];
-      if (tMax == null || tMin == null || precip == null || wcode == null)
-        continue;
-      if (!byMmDd.has(mmdd))
-        byMmDd.set(mmdd, { tMax: [], tMin: [], precip: [], wcode: [] });
-      const bucket = byMmDd.get(mmdd);
-      if (!bucket) continue;
-      bucket.tMax.push(tMax);
-      bucket.tMin.push(tMin);
-      bucket.precip.push(precip);
-      bucket.wcode.push(wcode);
-    }
+    const byMmDd = bucketArchiveByMmDd(await fetchArchive(venue));
 
     const venueNormals: Record<string, ClimateNormal> = {};
     for (const mmdd of needed.get(venue.id) ?? []) {
@@ -406,17 +452,31 @@ async function main() {
       if (!bucket || bucket.tMax.length === 0) {
         throw new Error(`No archive data for ${venue.id} ${mmdd}`);
       }
-      venueNormals[mmdd] = {
-        tMaxC: round1(mean(bucket.tMax)),
-        tMinC: round1(mean(bucket.tMin)),
-        precipMm: round1(mean(bucket.precip)),
-        weatherCode: mode(bucket.wcode),
-      };
+      venueNormals[mmdd] = bucketToNormal(bucket);
     }
     normals[venue.id] = venueNormals;
 
-    if (i < venuesWithMatches.length - 1) await sleep(2000); // throttle ~2s
+    await sleep(2000); // throttle ~2s
   }
+
+  // Oslo: weather is ALWAYS reported for Oslo (where the parties happen), not
+  // the venue — so its normals are needed regardless of which venues play.
+  // Generate the full year so normalWeather's nearest-bucket fallback always
+  // has data to fall back to.
+  console.log("Climate: oslo (viewing location)…");
+  const osloVenue = {
+    id: "oslo",
+    lat: 59.9139,
+    lng: 10.7522,
+    tz: "Europe/Oslo",
+  } as Venue;
+  const osloByMmDd = bucketArchiveByMmDd(await fetchArchive(osloVenue));
+  const osloNormals: Record<string, ClimateNormal> = {};
+  for (const [mmdd, bucket] of osloByMmDd) {
+    if (bucket.tMax.length === 0) continue;
+    osloNormals[mmdd] = bucketToNormal(bucket);
+  }
+  normals.oslo = osloNormals;
 
   await writeFile(
     resolve(DATA_DIR, "climate-normals.json"),

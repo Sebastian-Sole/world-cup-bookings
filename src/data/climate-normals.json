@@ -4,25 +4,25 @@
       "tMaxC": 30.3,
       "tMinC": 20.5,
       "precipMm": 2.4,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-24": {
       "tMaxC": 30.8,
       "tMinC": 21.8,
       "precipMm": 4.1,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "06-15": {
       "tMaxC": 30.5,
       "tMinC": 20.5,
       "precipMm": 4.2,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "06-21": {
       "tMaxC": 30.1,
       "tMinC": 20.5,
       "precipMm": 4.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-27": {
       "tMaxC": 30,
@@ -34,7 +34,7 @@
       "tMaxC": 30.8,
       "tMinC": 21.5,
       "precipMm": 4.5,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "07-07": {
       "tMaxC": 30.3,
@@ -46,7 +46,7 @@
       "tMaxC": 31.6,
       "tMinC": 21.8,
       "precipMm": 2.2,
-      "weatherCode": 51
+      "weatherCode": 2
     }
   },
   "boston": {
@@ -54,43 +54,43 @@
       "tMaxC": 25.1,
       "tMinC": 15.1,
       "precipMm": 2.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-19": {
       "tMaxC": 26.6,
       "tMinC": 16.2,
       "precipMm": 2.1,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-16": {
       "tMaxC": 24.5,
       "tMinC": 13.9,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-26": {
       "tMaxC": 27.7,
       "tMinC": 16.9,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-23": {
       "tMaxC": 27.1,
       "tMinC": 15.7,
       "precipMm": 1,
-      "weatherCode": 61
+      "weatherCode": 2
     },
     "06-29": {
       "tMaxC": 26.9,
       "tMinC": 17.1,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-09": {
       "tMaxC": 27.2,
       "tMinC": 18.1,
       "precipMm": 6.7,
-      "weatherCode": 61
+      "weatherCode": 2
     }
   },
   "dallas": {
@@ -98,19 +98,19 @@
       "tMaxC": 32.9,
       "tMinC": 23.5,
       "precipMm": 2,
-      "weatherCode": 51
+      "weatherCode": 1
     },
     "06-25": {
       "tMaxC": 33.9,
       "tMinC": 24.6,
       "precipMm": 0.4,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-22": {
       "tMaxC": 33.2,
       "tMinC": 24,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-27": {
       "tMaxC": 33.7,
@@ -122,31 +122,31 @@
       "tMaxC": 32.8,
       "tMinC": 23.8,
       "precipMm": 6.9,
-      "weatherCode": 2
+      "weatherCode": 1
     },
     "06-30": {
       "tMaxC": 34.5,
       "tMinC": 24.8,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-03": {
       "tMaxC": 34.6,
       "tMinC": 25.4,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-06": {
       "tMaxC": 33.7,
       "tMinC": 24.7,
       "precipMm": 2.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-14": {
       "tMaxC": 36,
       "tMinC": 25.9,
       "precipMm": 0.3,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   },
   "guadalajara": {
@@ -154,13 +154,13 @@
       "tMaxC": 30.4,
       "tMinC": 17,
       "precipMm": 2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-18": {
       "tMaxC": 29.4,
       "tMinC": 16.8,
       "precipMm": 2.2,
-      "weatherCode": 53
+      "weatherCode": 61
     },
     "06-26": {
       "tMaxC": 26.1,
@@ -180,7 +180,7 @@
       "tMaxC": 32.6,
       "tMinC": 24.3,
       "precipMm": 1.1,
-      "weatherCode": 51
+      "weatherCode": 1
     },
     "06-20": {
       "tMaxC": 32.3,
@@ -192,7 +192,7 @@
       "tMaxC": 32.1,
       "tMinC": 24.6,
       "precipMm": 6.1,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "06-17": {
       "tMaxC": 32.2,
@@ -204,19 +204,19 @@
       "tMaxC": 32,
       "tMinC": 24.5,
       "precipMm": 3.5,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "06-29": {
       "tMaxC": 31.8,
       "tMinC": 24.3,
       "precipMm": 4.9,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "07-04": {
       "tMaxC": 32,
       "tMinC": 25.1,
       "precipMm": 9.5,
-      "weatherCode": 53
+      "weatherCode": 63
     }
   },
   "kansas-city": {
@@ -224,37 +224,37 @@
       "tMaxC": 31.9,
       "tMinC": 20.8,
       "precipMm": 1.6,
-      "weatherCode": 0
+      "weatherCode": 1
     },
     "06-25": {
       "tMaxC": 31.3,
       "tMinC": 21.4,
       "precipMm": 7.2,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "06-16": {
       "tMaxC": 31.9,
       "tMinC": 21.8,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-27": {
       "tMaxC": 29.9,
       "tMinC": 18.9,
       "precipMm": 0.9,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-03": {
       "tMaxC": 29.8,
       "tMinC": 20.6,
       "precipMm": 6.7,
-      "weatherCode": 53
+      "weatherCode": 63
     },
     "07-11": {
       "tMaxC": 32.1,
       "tMinC": 22.2,
       "precipMm": 2.3,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   },
   "los-angeles": {
@@ -262,49 +262,49 @@
       "tMaxC": 26.5,
       "tMinC": 15.9,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-12": {
       "tMaxC": 25,
       "tMinC": 15.3,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-25": {
       "tMaxC": 26,
       "tMinC": 16.2,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-15": {
       "tMaxC": 26.4,
       "tMinC": 15.3,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-21": {
       "tMaxC": 26.7,
       "tMinC": 16.5,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-28": {
       "tMaxC": 27.3,
       "tMinC": 17,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-02": {
       "tMaxC": 27.2,
       "tMinC": 17,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-10": {
       "tMaxC": 29.1,
       "tMinC": 17.4,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   },
   "mexico-city": {
@@ -312,7 +312,7 @@
       "tMaxC": 24.6,
       "tMinC": 13.2,
       "precipMm": 4.1,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "06-24": {
       "tMaxC": 22.9,
@@ -324,7 +324,7 @@
       "tMaxC": 25.3,
       "tMinC": 12.6,
       "precipMm": 3.4,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-30": {
       "tMaxC": 22,
@@ -344,7 +344,7 @@
       "tMaxC": 31,
       "tMinC": 24.5,
       "precipMm": 8,
-      "weatherCode": 61
+      "weatherCode": 63
     },
     "06-15": {
       "tMaxC": 30.1,
@@ -356,7 +356,7 @@
       "tMaxC": 30.8,
       "tMinC": 24.1,
       "precipMm": 4,
-      "weatherCode": 53
+      "weatherCode": 61
     },
     "06-27": {
       "tMaxC": 31.2,
@@ -368,7 +368,7 @@
       "tMaxC": 31.4,
       "tMinC": 24.9,
       "precipMm": 4.7,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "07-11": {
       "tMaxC": 31.1,
@@ -380,7 +380,7 @@
       "tMaxC": 31.4,
       "tMinC": 24.9,
       "precipMm": 4.2,
-      "weatherCode": 63
+      "weatherCode": 61
     }
   },
   "monterrey": {
@@ -388,25 +388,25 @@
       "tMaxC": 33.2,
       "tMinC": 22,
       "precipMm": 4.2,
-      "weatherCode": 51
+      "weatherCode": 1
     },
     "06-14": {
       "tMaxC": 34.2,
       "tMinC": 21.8,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-20": {
       "tMaxC": 32.6,
       "tMinC": 22.9,
       "precipMm": 9.2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-29": {
       "tMaxC": 32,
       "tMinC": 22,
       "precipMm": 1,
-      "weatherCode": 51
+      "weatherCode": 1
     }
   },
   "new-york-new-jersey": {
@@ -414,25 +414,25 @@
       "tMaxC": 25.9,
       "tMinC": 16.5,
       "precipMm": 3.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-25": {
       "tMaxC": 28.5,
       "tMinC": 18.3,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-16": {
       "tMaxC": 24.9,
       "tMinC": 16.2,
       "precipMm": 3.9,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "06-22": {
       "tMaxC": 26.3,
       "tMinC": 17.9,
       "precipMm": 1.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-27": {
       "tMaxC": 26.5,
@@ -444,19 +444,19 @@
       "tMaxC": 29.8,
       "tMinC": 19.8,
       "precipMm": 4.2,
-      "weatherCode": 51
+      "weatherCode": 1
     },
     "07-05": {
       "tMaxC": 29.8,
       "tMinC": 20.4,
       "precipMm": 1.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-19": {
       "tMaxC": 30.4,
       "tMinC": 20.5,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   },
   "philadelphia": {
@@ -464,25 +464,25 @@
       "tMaxC": 29.4,
       "tMinC": 18.9,
       "precipMm": 6.7,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "06-14": {
       "tMaxC": 27.7,
       "tMinC": 18,
       "precipMm": 2,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "06-25": {
       "tMaxC": 29.2,
       "tMinC": 18.4,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-22": {
       "tMaxC": 27.9,
       "tMinC": 18.8,
       "precipMm": 1.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-27": {
       "tMaxC": 28.5,
@@ -494,7 +494,7 @@
       "tMaxC": 30,
       "tMinC": 20.1,
       "precipMm": 3.4,
-      "weatherCode": 63
+      "weatherCode": 61
     }
   },
   "san-francisco-bay-area": {
@@ -502,25 +502,25 @@
       "tMaxC": 25.2,
       "tMinC": 14,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 0
     },
     "06-19": {
       "tMaxC": 27.3,
       "tMinC": 14.4,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 0
     },
     "06-25": {
       "tMaxC": 27.7,
       "tMinC": 14.9,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-16": {
       "tMaxC": 25.8,
       "tMinC": 13,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-22": {
       "tMaxC": 29.6,
@@ -532,7 +532,7 @@
       "tMaxC": 28.4,
       "tMinC": 14.6,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   },
   "seattle": {
@@ -540,37 +540,37 @@
       "tMaxC": 22.3,
       "tMinC": 13,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-19": {
       "tMaxC": 21,
       "tMinC": 11.7,
       "precipMm": 1,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-15": {
       "tMaxC": 18.8,
       "tMinC": 11.3,
       "precipMm": 5.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-26": {
       "tMaxC": 24.9,
       "tMinC": 14.1,
       "precipMm": 0.2,
-      "weatherCode": 51
+      "weatherCode": 1
     },
     "07-01": {
       "tMaxC": 23.3,
       "tMinC": 14.1,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-06": {
       "tMaxC": 25.2,
       "tMinC": 15,
       "precipMm": 0.2,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   },
   "toronto": {
@@ -578,13 +578,13 @@
       "tMaxC": 21.7,
       "tMinC": 13.5,
       "precipMm": 4.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-20": {
       "tMaxC": 23.9,
       "tMinC": 16.5,
       "precipMm": 5.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-26": {
       "tMaxC": 24.8,
@@ -596,7 +596,7 @@
       "tMaxC": 24.3,
       "tMinC": 14.2,
       "precipMm": 0,
-      "weatherCode": 2
+      "weatherCode": 1
     },
     "06-23": {
       "tMaxC": 23.2,
@@ -608,7 +608,7 @@
       "tMaxC": 25.5,
       "tMinC": 17.2,
       "precipMm": 3,
-      "weatherCode": 3
+      "weatherCode": 61
     }
   },
   "vancouver": {
@@ -616,43 +616,43 @@
       "tMaxC": 18.3,
       "tMinC": 12.6,
       "precipMm": 2.3,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-24": {
       "tMaxC": 20.4,
       "tMinC": 13.2,
       "precipMm": 2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-13": {
       "tMaxC": 17.7,
       "tMinC": 11.4,
       "precipMm": 5.2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-21": {
       "tMaxC": 19.9,
       "tMinC": 12.8,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-26": {
       "tMaxC": 22.5,
       "tMinC": 14.7,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-02": {
       "tMaxC": 21,
       "tMinC": 14.3,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-07": {
       "tMaxC": 21,
       "tMinC": 15.3,
       "precipMm": 3.3,
-      "weatherCode": 53
+      "weatherCode": 61
     }
   },
   "oslo": {
@@ -660,37 +660,37 @@
       "tMaxC": 20.9,
       "tMinC": 10.3,
       "precipMm": 1.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-02": {
       "tMaxC": 19.9,
       "tMinC": 10.5,
       "precipMm": 2.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-03": {
       "tMaxC": 20.8,
       "tMinC": 10.8,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-04": {
       "tMaxC": 19.4,
       "tMinC": 10.5,
       "precipMm": 0.9,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-05": {
       "tMaxC": 19.3,
       "tMinC": 9.7,
       "precipMm": 5.2,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "06-06": {
       "tMaxC": 19.9,
       "tMinC": 10.3,
       "precipMm": 3.6,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "06-07": {
       "tMaxC": 19.5,
@@ -708,49 +708,49 @@
       "tMaxC": 18.6,
       "tMinC": 10,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-10": {
       "tMaxC": 19.6,
       "tMinC": 9.9,
       "precipMm": 2.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-11": {
       "tMaxC": 19.9,
       "tMinC": 10.7,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-12": {
       "tMaxC": 20,
       "tMinC": 11.1,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-13": {
       "tMaxC": 20.3,
       "tMinC": 11.3,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-14": {
       "tMaxC": 19.8,
       "tMinC": 11.8,
       "precipMm": 2.6,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "06-15": {
       "tMaxC": 21.4,
       "tMinC": 11.5,
       "precipMm": 2.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-16": {
       "tMaxC": 21.2,
       "tMinC": 12.6,
       "precipMm": 2.2,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "06-17": {
       "tMaxC": 20.7,
@@ -762,7 +762,7 @@
       "tMaxC": 20.3,
       "tMinC": 12.6,
       "precipMm": 2.6,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "06-19": {
       "tMaxC": 20.5,
@@ -774,7 +774,7 @@
       "tMaxC": 19.7,
       "tMinC": 12.2,
       "precipMm": 4,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "06-21": {
       "tMaxC": 19.6,
@@ -786,61 +786,61 @@
       "tMaxC": 18.7,
       "tMinC": 11.9,
       "precipMm": 2.2,
-      "weatherCode": 51
+      "weatherCode": 3
     },
     "06-23": {
       "tMaxC": 21.4,
       "tMinC": 11.5,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-24": {
       "tMaxC": 22.4,
       "tMinC": 12,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-25": {
       "tMaxC": 22.7,
       "tMinC": 13.2,
       "precipMm": 0.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-26": {
       "tMaxC": 23.1,
       "tMinC": 13.4,
       "precipMm": 5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-27": {
       "tMaxC": 22.5,
       "tMinC": 13.6,
       "precipMm": 2.5,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-28": {
       "tMaxC": 22.1,
       "tMinC": 13.5,
       "precipMm": 6.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "06-29": {
       "tMaxC": 21.2,
       "tMinC": 13.1,
       "precipMm": 0.2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "06-30": {
       "tMaxC": 21.3,
       "tMinC": 13,
       "precipMm": 3.4,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-01": {
       "tMaxC": 21.8,
       "tMinC": 13,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "07-02": {
       "tMaxC": 21.1,
@@ -852,115 +852,115 @@
       "tMaxC": 20.9,
       "tMinC": 12.4,
       "precipMm": 1.5,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "07-04": {
       "tMaxC": 20,
       "tMinC": 12.5,
       "precipMm": 3.3,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "07-05": {
       "tMaxC": 20.5,
       "tMinC": 12.1,
       "precipMm": 2.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-06": {
       "tMaxC": 19.4,
       "tMinC": 12.1,
       "precipMm": 7.2,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "07-07": {
       "tMaxC": 20,
       "tMinC": 12.3,
       "precipMm": 5.2,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "07-08": {
       "tMaxC": 20,
       "tMinC": 12,
       "precipMm": 2.7,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-09": {
       "tMaxC": 20.8,
       "tMinC": 12.4,
       "precipMm": 1.1,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-10": {
       "tMaxC": 20.7,
       "tMinC": 12.8,
       "precipMm": 4.9,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "07-11": {
       "tMaxC": 21.4,
       "tMinC": 13.2,
       "precipMm": 2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-12": {
       "tMaxC": 21.3,
       "tMinC": 13.3,
       "precipMm": 1.6,
-      "weatherCode": 53
+      "weatherCode": 2
     },
     "07-13": {
       "tMaxC": 21.9,
       "tMinC": 13.1,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "07-14": {
       "tMaxC": 20.3,
       "tMinC": 13.8,
       "precipMm": 6.5,
-      "weatherCode": 61
+      "weatherCode": 63
     },
     "07-15": {
       "tMaxC": 21,
       "tMinC": 12.8,
       "precipMm": 5.6,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "07-16": {
       "tMaxC": 21.1,
       "tMinC": 13.3,
       "precipMm": 3.2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-17": {
       "tMaxC": 21.1,
       "tMinC": 12.9,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-18": {
       "tMaxC": 20.5,
       "tMinC": 13.8,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-19": {
       "tMaxC": 21.3,
       "tMinC": 12.8,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-20": {
       "tMaxC": 23.1,
       "tMinC": 13.1,
       "precipMm": 0.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-21": {
       "tMaxC": 21.7,
       "tMinC": 13.3,
       "precipMm": 3.4,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-22": {
       "tMaxC": 21.3,
@@ -972,31 +972,31 @@
       "tMaxC": 22.5,
       "tMinC": 13.3,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-24": {
       "tMaxC": 22.4,
       "tMinC": 13.8,
       "precipMm": 3.3,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-25": {
       "tMaxC": 22.3,
       "tMinC": 14.1,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "07-26": {
       "tMaxC": 21.2,
       "tMinC": 14.3,
       "precipMm": 7.8,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-27": {
       "tMaxC": 21.8,
       "tMinC": 14.6,
       "precipMm": 4.9,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "07-28": {
       "tMaxC": 21.4,
@@ -1008,37 +1008,37 @@
       "tMaxC": 20.7,
       "tMinC": 13.5,
       "precipMm": 8.4,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "07-30": {
       "tMaxC": 21.2,
       "tMinC": 12.2,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "07-31": {
       "tMaxC": 20.8,
       "tMinC": 13.7,
       "precipMm": 2,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "08-01": {
       "tMaxC": 20.2,
       "tMinC": 13,
       "precipMm": 1.3,
-      "weatherCode": 53
+      "weatherCode": 61
     },
     "08-02": {
       "tMaxC": 20.1,
       "tMinC": 12.6,
       "precipMm": 1.7,
-      "weatherCode": 53
+      "weatherCode": 61
     },
     "08-03": {
       "tMaxC": 20.7,
       "tMinC": 12.7,
       "precipMm": 1.8,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "08-04": {
       "tMaxC": 20,
@@ -1050,25 +1050,25 @@
       "tMaxC": 19.3,
       "tMinC": 13.6,
       "precipMm": 4.8,
-      "weatherCode": 63
+      "weatherCode": 61
     },
     "08-06": {
       "tMaxC": 19,
       "tMinC": 12.7,
       "precipMm": 4.1,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "08-07": {
       "tMaxC": 19.8,
       "tMinC": 12.7,
       "precipMm": 7,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "08-08": {
       "tMaxC": 20.4,
       "tMinC": 13.3,
       "precipMm": 3.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-09": {
       "tMaxC": 19.9,
@@ -1080,253 +1080,253 @@
       "tMaxC": 20,
       "tMinC": 13.2,
       "precipMm": 7.9,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "08-11": {
       "tMaxC": 20.4,
       "tMinC": 12.7,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-12": {
       "tMaxC": 20.2,
       "tMinC": 12.5,
       "precipMm": 1.2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "08-13": {
       "tMaxC": 20.4,
       "tMinC": 12.1,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "08-14": {
       "tMaxC": 21.1,
       "tMinC": 12.2,
       "precipMm": 0.3,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "08-15": {
       "tMaxC": 21.1,
       "tMinC": 12.6,
       "precipMm": 4.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-16": {
       "tMaxC": 20.8,
       "tMinC": 14.1,
       "precipMm": 3.6,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "08-17": {
       "tMaxC": 20.7,
       "tMinC": 13.3,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "08-18": {
       "tMaxC": 20.2,
       "tMinC": 13.1,
       "precipMm": 1.7,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "08-19": {
       "tMaxC": 20.5,
       "tMinC": 12.9,
       "precipMm": 2.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-20": {
       "tMaxC": 19.8,
       "tMinC": 12.2,
       "precipMm": 6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-21": {
       "tMaxC": 19.9,
       "tMinC": 12.4,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "08-22": {
       "tMaxC": 19.3,
       "tMinC": 11.6,
       "precipMm": 2.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "08-23": {
       "tMaxC": 20.8,
       "tMinC": 11,
       "precipMm": 1.4,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "08-24": {
       "tMaxC": 19.5,
       "tMinC": 11.4,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-25": {
       "tMaxC": 19.6,
       "tMinC": 12.7,
       "precipMm": 4.6,
-      "weatherCode": 53
+      "weatherCode": 61
     },
     "08-26": {
       "tMaxC": 18.7,
       "tMinC": 12.2,
       "precipMm": 5.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-27": {
       "tMaxC": 19.2,
       "tMinC": 11.4,
       "precipMm": 4.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-28": {
       "tMaxC": 18.7,
       "tMinC": 11.8,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-29": {
       "tMaxC": 18.5,
       "tMinC": 11.7,
       "precipMm": 2.3,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "08-30": {
       "tMaxC": 19.1,
       "tMinC": 10.4,
       "precipMm": 0.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "08-31": {
       "tMaxC": 19,
       "tMinC": 10.3,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-01": {
       "tMaxC": 19.1,
       "tMinC": 10.3,
       "precipMm": 2.8,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "09-02": {
       "tMaxC": 18.2,
       "tMinC": 9.9,
       "precipMm": 5.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "09-03": {
       "tMaxC": 17.3,
       "tMinC": 10.8,
       "precipMm": 3.6,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "09-04": {
       "tMaxC": 17.2,
       "tMinC": 10,
       "precipMm": 4.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-05": {
       "tMaxC": 17.4,
       "tMinC": 10.2,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-06": {
       "tMaxC": 16.9,
       "tMinC": 10.2,
       "precipMm": 2.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-07": {
       "tMaxC": 18,
       "tMinC": 10.1,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-08": {
       "tMaxC": 18.2,
       "tMinC": 11.2,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-09": {
       "tMaxC": 17.9,
       "tMinC": 11.4,
       "precipMm": 4.1,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "09-10": {
       "tMaxC": 17.8,
       "tMinC": 11.5,
       "precipMm": 3.5,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "09-11": {
       "tMaxC": 16.6,
       "tMinC": 11.3,
       "precipMm": 5,
-      "weatherCode": 61
+      "weatherCode": 63
     },
     "09-12": {
       "tMaxC": 16.5,
       "tMinC": 10.9,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-13": {
       "tMaxC": 16,
       "tMinC": 10,
       "precipMm": 3.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-14": {
       "tMaxC": 16.9,
       "tMinC": 9.7,
       "precipMm": 1.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-15": {
       "tMaxC": 16.7,
       "tMinC": 9.9,
       "precipMm": 5.5,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "09-16": {
       "tMaxC": 15.3,
       "tMinC": 9.7,
       "precipMm": 2.7,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "09-17": {
       "tMaxC": 14.4,
       "tMinC": 8.7,
       "precipMm": 4.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-18": {
       "tMaxC": 16.6,
       "tMinC": 9.4,
       "precipMm": 3.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-19": {
       "tMaxC": 15.6,
       "tMinC": 9.6,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-20": {
       "tMaxC": 15.3,
       "tMinC": 8.4,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-21": {
       "tMaxC": 16.1,
@@ -1338,31 +1338,31 @@
       "tMaxC": 15,
       "tMinC": 9.1,
       "precipMm": 5.5,
-      "weatherCode": 55
+      "weatherCode": 63
     },
     "09-23": {
       "tMaxC": 13.7,
       "tMinC": 9.9,
       "precipMm": 3.3,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "09-24": {
       "tMaxC": 13.9,
       "tMinC": 8.8,
       "precipMm": 2.4,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "09-25": {
       "tMaxC": 14.6,
       "tMinC": 8.9,
       "precipMm": 1.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-26": {
       "tMaxC": 14.5,
       "tMinC": 8.5,
       "precipMm": 5.8,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "09-27": {
       "tMaxC": 13.8,
@@ -1374,25 +1374,25 @@
       "tMaxC": 14.6,
       "tMinC": 9.2,
       "precipMm": 2.5,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "09-29": {
       "tMaxC": 13.5,
       "tMinC": 8.6,
       "precipMm": 1.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "09-30": {
       "tMaxC": 13.4,
       "tMinC": 7.9,
       "precipMm": 2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-01": {
       "tMaxC": 13,
       "tMinC": 7.4,
       "precipMm": 4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-02": {
       "tMaxC": 12.6,
@@ -1404,115 +1404,115 @@
       "tMaxC": 12.6,
       "tMinC": 6.7,
       "precipMm": 4.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-04": {
       "tMaxC": 11.6,
       "tMinC": 6.3,
       "precipMm": 3.2,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "10-05": {
       "tMaxC": 11.5,
       "tMinC": 6.4,
       "precipMm": 1.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-06": {
       "tMaxC": 11.4,
       "tMinC": 5.8,
       "precipMm": 3.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-07": {
       "tMaxC": 11.1,
       "tMinC": 5.4,
       "precipMm": 0.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-08": {
       "tMaxC": 10.6,
       "tMinC": 6,
       "precipMm": 1.7,
-      "weatherCode": 53
+      "weatherCode": 2
     },
     "10-09": {
       "tMaxC": 10.3,
       "tMinC": 5.6,
       "precipMm": 1,
-      "weatherCode": 51
+      "weatherCode": 3
     },
     "10-10": {
       "tMaxC": 11,
       "tMinC": 5.8,
       "precipMm": 5,
-      "weatherCode": 53
+      "weatherCode": 61
     },
     "10-11": {
       "tMaxC": 10.6,
       "tMinC": 5.6,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-12": {
       "tMaxC": 10.9,
       "tMinC": 5,
       "precipMm": 1,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "10-13": {
       "tMaxC": 10,
       "tMinC": 4.7,
       "precipMm": 2.8,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "10-14": {
       "tMaxC": 10.4,
       "tMinC": 5.5,
       "precipMm": 0.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-15": {
       "tMaxC": 9.9,
       "tMinC": 5.5,
       "precipMm": 4.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-16": {
       "tMaxC": 9.3,
       "tMinC": 4.2,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-17": {
       "tMaxC": 9.3,
       "tMinC": 4.6,
       "precipMm": 1.9,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "10-18": {
       "tMaxC": 9,
       "tMinC": 3,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "10-19": {
       "tMaxC": 6.5,
       "tMinC": 1.8,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-20": {
       "tMaxC": 7.3,
       "tMinC": 2.9,
       "precipMm": 5.2,
-      "weatherCode": 51
+      "weatherCode": 3
     },
     "10-21": {
       "tMaxC": 7.6,
       "tMinC": 3.3,
       "precipMm": 2,
-      "weatherCode": 51
+      "weatherCode": 3
     },
     "10-22": {
       "tMaxC": 7.9,
@@ -1524,13 +1524,13 @@
       "tMaxC": 7.9,
       "tMinC": 3.9,
       "precipMm": 1.3,
-      "weatherCode": 53
+      "weatherCode": 2
     },
     "10-24": {
       "tMaxC": 7.9,
       "tMinC": 4.4,
       "precipMm": 5.7,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "10-25": {
       "tMaxC": 8.6,
@@ -1554,13 +1554,13 @@
       "tMaxC": 8,
       "tMinC": 3.5,
       "precipMm": 0.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "10-29": {
       "tMaxC": 7.2,
       "tMinC": 2.4,
       "precipMm": 0.2,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "10-30": {
       "tMaxC": 6.1,
@@ -1578,19 +1578,19 @@
       "tMaxC": 6.8,
       "tMinC": 2.9,
       "precipMm": 5.3,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "11-02": {
       "tMaxC": 7.8,
       "tMinC": 3,
       "precipMm": 6.2,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "11-03": {
       "tMaxC": 6.3,
       "tMinC": 2.1,
       "precipMm": 3.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "11-04": {
       "tMaxC": 5.7,
@@ -1602,13 +1602,13 @@
       "tMaxC": 6,
       "tMinC": 2.4,
       "precipMm": 3.8,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "11-06": {
       "tMaxC": 5.9,
       "tMinC": 2.1,
       "precipMm": 2.3,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "11-07": {
       "tMaxC": 4.9,
@@ -1626,7 +1626,7 @@
       "tMaxC": 5.7,
       "tMinC": 2.4,
       "precipMm": 3.1,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "11-10": {
       "tMaxC": 5.2,
@@ -1638,19 +1638,19 @@
       "tMaxC": 5.3,
       "tMinC": 1.9,
       "precipMm": 4.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "11-12": {
       "tMaxC": 5.3,
       "tMinC": 1.2,
       "precipMm": 1.8,
-      "weatherCode": 51
+      "weatherCode": 3
     },
     "11-13": {
       "tMaxC": 4.8,
       "tMinC": 1.4,
       "precipMm": 1.7,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "11-14": {
       "tMaxC": 4.3,
@@ -1668,13 +1668,13 @@
       "tMaxC": 5.2,
       "tMinC": 1.6,
       "precipMm": 5.7,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "11-17": {
       "tMaxC": 4.6,
       "tMinC": 0.3,
       "precipMm": 0.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "11-18": {
       "tMaxC": 3.6,
@@ -1692,7 +1692,7 @@
       "tMaxC": 1.6,
       "tMinC": -1.6,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "11-21": {
       "tMaxC": 2,
@@ -1704,7 +1704,7 @@
       "tMaxC": 3.1,
       "tMinC": -1.5,
       "precipMm": 4.7,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "11-23": {
       "tMaxC": 3.4,
@@ -1722,49 +1722,49 @@
       "tMaxC": 3.3,
       "tMinC": -0.7,
       "precipMm": 0.6,
-      "weatherCode": 71
+      "weatherCode": 2
     },
     "11-26": {
       "tMaxC": 1.7,
       "tMinC": -2.4,
       "precipMm": 1.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "11-27": {
       "tMaxC": 0.9,
       "tMinC": -2.4,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "11-28": {
       "tMaxC": 0.5,
       "tMinC": -3,
       "precipMm": 3.7,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "11-29": {
       "tMaxC": 0.6,
       "tMinC": -2.3,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 73
     },
     "11-30": {
       "tMaxC": 0.8,
       "tMinC": -2.9,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 73
     },
     "12-01": {
       "tMaxC": -0.4,
       "tMinC": -4.3,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-02": {
       "tMaxC": -0.4,
       "tMinC": -5.1,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-03": {
       "tMaxC": -0.4,
@@ -1776,7 +1776,7 @@
       "tMaxC": -0.2,
       "tMinC": -4.2,
       "precipMm": 3.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-05": {
       "tMaxC": 0.4,
@@ -1794,31 +1794,31 @@
       "tMaxC": 1,
       "tMinC": -3.2,
       "precipMm": 2.3,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "12-08": {
       "tMaxC": 1.4,
       "tMinC": -2.8,
       "precipMm": 4.4,
-      "weatherCode": 75
+      "weatherCode": 61
     },
     "12-09": {
       "tMaxC": 1.5,
       "tMinC": -1.9,
       "precipMm": 2.1,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "12-10": {
       "tMaxC": 1.6,
       "tMinC": -2.5,
       "precipMm": 2.5,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "12-11": {
       "tMaxC": 0.5,
       "tMinC": -2.2,
       "precipMm": 2.1,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "12-12": {
       "tMaxC": -0.7,
@@ -1836,13 +1836,13 @@
       "tMaxC": -1.9,
       "tMinC": -5.5,
       "precipMm": 2.4,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "12-15": {
       "tMaxC": -1.5,
       "tMinC": -5.2,
       "precipMm": 1.3,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "12-16": {
       "tMaxC": 0.3,
@@ -1860,25 +1860,25 @@
       "tMaxC": 1.5,
       "tMinC": -4.2,
       "precipMm": 1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-19": {
       "tMaxC": 2.2,
       "tMinC": -3.1,
       "precipMm": 2.3,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "12-20": {
       "tMaxC": 2.7,
       "tMinC": -0.4,
       "precipMm": 1.5,
-      "weatherCode": 51
+      "weatherCode": 3
     },
     "12-21": {
       "tMaxC": 2.2,
       "tMinC": -1.6,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "12-22": {
       "tMaxC": 1.4,
@@ -1890,37 +1890,37 @@
       "tMaxC": 0.1,
       "tMinC": -5.2,
       "precipMm": 0.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-24": {
       "tMaxC": -0.3,
       "tMinC": -5.7,
       "precipMm": 1.8,
-      "weatherCode": 61
+      "weatherCode": 2
     },
     "12-25": {
       "tMaxC": 1.2,
       "tMinC": -4.8,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-26": {
       "tMaxC": 0.7,
       "tMinC": -4.3,
       "precipMm": 5.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-27": {
       "tMaxC": -0.3,
       "tMinC": -4.9,
       "precipMm": 4.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "12-28": {
       "tMaxC": -0.5,
       "tMinC": -4.6,
       "precipMm": 5,
-      "weatherCode": 3
+      "weatherCode": 75
     },
     "12-29": {
       "tMaxC": 0.4,
@@ -1932,13 +1932,13 @@
       "tMaxC": 1.6,
       "tMinC": -2.9,
       "precipMm": 2.7,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "12-31": {
       "tMaxC": 2,
       "tMinC": -2.2,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "01-01": {
       "tMaxC": 1.2,
@@ -1950,121 +1950,121 @@
       "tMaxC": 0.2,
       "tMinC": -3.7,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-03": {
       "tMaxC": -0.5,
       "tMinC": -5.3,
       "precipMm": 0.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-04": {
       "tMaxC": -1.6,
       "tMinC": -6.8,
       "precipMm": 2.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-05": {
       "tMaxC": -3.7,
       "tMinC": -9.1,
       "precipMm": 0.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-06": {
       "tMaxC": -4.2,
       "tMinC": -10.4,
       "precipMm": 2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-07": {
       "tMaxC": -1.8,
       "tMinC": -8,
       "precipMm": 2.5,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "01-08": {
       "tMaxC": -1.7,
       "tMinC": -5.2,
       "precipMm": 2.8,
-      "weatherCode": 3
+      "weatherCode": 73
     },
     "01-09": {
       "tMaxC": -1.9,
       "tMinC": -6.3,
       "precipMm": 1,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "01-10": {
       "tMaxC": -0.5,
       "tMinC": -5.4,
       "precipMm": 4,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "01-11": {
       "tMaxC": 1.7,
       "tMinC": -3.7,
       "precipMm": 6.5,
-      "weatherCode": 73
+      "weatherCode": 63
     },
     "01-12": {
       "tMaxC": -0.2,
       "tMinC": -5.4,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-13": {
       "tMaxC": 0.1,
       "tMinC": -6,
       "precipMm": 1.4,
-      "weatherCode": 71
+      "weatherCode": 2
     },
     "01-14": {
       "tMaxC": -1.1,
       "tMinC": -6.4,
       "precipMm": 2.2,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "01-15": {
       "tMaxC": -2.9,
       "tMinC": -8.4,
       "precipMm": 4,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "01-16": {
       "tMaxC": -2.3,
       "tMinC": -9,
       "precipMm": 3.4,
-      "weatherCode": 75
+      "weatherCode": 2
     },
     "01-17": {
       "tMaxC": -2,
       "tMinC": -7,
       "precipMm": 4.8,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "01-18": {
       "tMaxC": -2.3,
       "tMinC": -7.8,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-19": {
       "tMaxC": -2.2,
       "tMinC": -7.5,
       "precipMm": 1,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "01-20": {
       "tMaxC": -2.5,
       "tMinC": -8.8,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-21": {
       "tMaxC": -1.1,
       "tMinC": -7.3,
       "precipMm": 3.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-22": {
       "tMaxC": -1,
@@ -2082,7 +2082,7 @@
       "tMaxC": 1,
       "tMinC": -3.6,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "01-25": {
       "tMaxC": 1.4,
@@ -2094,13 +2094,13 @@
       "tMaxC": 0.9,
       "tMinC": -3.6,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-27": {
       "tMaxC": 0.8,
       "tMinC": -4.2,
       "precipMm": 2.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-28": {
       "tMaxC": 0.6,
@@ -2118,13 +2118,13 @@
       "tMaxC": -0.6,
       "tMinC": -6.3,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "01-31": {
       "tMaxC": -0.8,
       "tMinC": -5.8,
       "precipMm": 2.4,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "02-01": {
       "tMaxC": 0,
@@ -2136,49 +2136,49 @@
       "tMaxC": -0.8,
       "tMinC": -6.3,
       "precipMm": 1.4,
-      "weatherCode": 71
+      "weatherCode": 2
     },
     "02-03": {
       "tMaxC": -1.3,
       "tMinC": -6.6,
       "precipMm": 1.1,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "02-04": {
       "tMaxC": -1.6,
       "tMinC": -8.3,
       "precipMm": 1.3,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "02-05": {
       "tMaxC": -0.8,
       "tMinC": -7.7,
       "precipMm": 1.9,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "02-06": {
       "tMaxC": -0.8,
       "tMinC": -8,
       "precipMm": 1.3,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "02-07": {
       "tMaxC": -1.4,
       "tMinC": -7.3,
       "precipMm": 1.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-08": {
       "tMaxC": 0.1,
       "tMinC": -6.3,
       "precipMm": 3.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-09": {
       "tMaxC": 0.7,
       "tMinC": -3.1,
       "precipMm": 4.7,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "02-10": {
       "tMaxC": 0.2,
@@ -2190,25 +2190,25 @@
       "tMaxC": 0.1,
       "tMinC": -5.4,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-12": {
       "tMaxC": 0.4,
       "tMinC": -6.2,
       "precipMm": 2.5,
-      "weatherCode": 73
+      "weatherCode": 2
     },
     "02-13": {
       "tMaxC": 1,
       "tMinC": -5.1,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-14": {
       "tMaxC": 0.6,
       "tMinC": -6.4,
       "precipMm": 2.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-15": {
       "tMaxC": 1.1,
@@ -2220,97 +2220,97 @@
       "tMaxC": 2.2,
       "tMinC": -2.2,
       "precipMm": 5.7,
-      "weatherCode": 73
+      "weatherCode": 63
     },
     "02-17": {
       "tMaxC": 1.7,
       "tMinC": -3.1,
       "precipMm": 2.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-18": {
       "tMaxC": 2.2,
       "tMinC": -3.3,
       "precipMm": 1.6,
-      "weatherCode": 73
+      "weatherCode": 3
     },
     "02-19": {
       "tMaxC": 2.7,
       "tMinC": -3,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-20": {
       "tMaxC": 2.6,
       "tMinC": -2.7,
       "precipMm": 4.8,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "02-21": {
       "tMaxC": 2.1,
       "tMinC": -2.7,
       "precipMm": 2.2,
-      "weatherCode": 71
+      "weatherCode": 3
     },
     "02-22": {
       "tMaxC": 2.2,
       "tMinC": -2.6,
       "precipMm": 2.6,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "02-23": {
       "tMaxC": 2.4,
       "tMinC": -3.8,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-24": {
       "tMaxC": 2.8,
       "tMinC": -3.2,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "02-25": {
       "tMaxC": 2.1,
       "tMinC": -4.1,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-26": {
       "tMaxC": 2.7,
       "tMinC": -5.4,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-27": {
       "tMaxC": 2.5,
       "tMinC": -4.7,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "02-28": {
       "tMaxC": 3.2,
       "tMinC": -4.2,
       "precipMm": 2.3,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "02-29": {
       "tMaxC": 2.1,
       "tMinC": -2.9,
       "precipMm": 3.7,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "03-01": {
       "tMaxC": 2.7,
       "tMinC": -2.9,
       "precipMm": 3.2,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "03-02": {
       "tMaxC": 3.2,
       "tMinC": -2.8,
       "precipMm": 2.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-03": {
       "tMaxC": 2.8,
@@ -2322,55 +2322,55 @@
       "tMaxC": 2.1,
       "tMinC": -2.5,
       "precipMm": 3.2,
-      "weatherCode": 71
+      "weatherCode": 61
     },
     "03-05": {
       "tMaxC": 1.3,
       "tMinC": -3.9,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-06": {
       "tMaxC": 1.6,
       "tMinC": -4.8,
       "precipMm": 1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-07": {
       "tMaxC": 1.8,
       "tMinC": -4.1,
       "precipMm": 1.9,
-      "weatherCode": 71
+      "weatherCode": 2
     },
     "03-08": {
       "tMaxC": 2,
       "tMinC": -4.8,
       "precipMm": 3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-09": {
       "tMaxC": 1.9,
       "tMinC": -4.5,
       "precipMm": 1.1,
-      "weatherCode": 71
+      "weatherCode": 2
     },
     "03-10": {
       "tMaxC": 1.3,
       "tMinC": -5.7,
       "precipMm": 1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-11": {
       "tMaxC": 2.2,
       "tMinC": -5.3,
       "precipMm": 5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-12": {
       "tMaxC": 3.4,
       "tMinC": -5.1,
       "precipMm": 2.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-13": {
       "tMaxC": 3.5,
@@ -2382,61 +2382,61 @@
       "tMaxC": 5.3,
       "tMinC": -4.3,
       "precipMm": 0.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-15": {
       "tMaxC": 4.9,
       "tMinC": -2.3,
       "precipMm": 2.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-16": {
       "tMaxC": 4.2,
       "tMinC": -4.3,
       "precipMm": 1.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-17": {
       "tMaxC": 4.5,
       "tMinC": -2.5,
       "precipMm": 4.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-18": {
       "tMaxC": 5.1,
       "tMinC": -3.5,
       "precipMm": 0.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-19": {
       "tMaxC": 5,
       "tMinC": -3.4,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-20": {
       "tMaxC": 7,
       "tMinC": -1.8,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-21": {
       "tMaxC": 7,
       "tMinC": -2,
       "precipMm": 1.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-22": {
       "tMaxC": 7.1,
       "tMinC": -1.1,
       "precipMm": 1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-23": {
       "tMaxC": 6.9,
       "tMinC": -0.6,
       "precipMm": 0.4,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "03-24": {
       "tMaxC": 7.2,
@@ -2448,55 +2448,55 @@
       "tMaxC": 7.7,
       "tMinC": -0.5,
       "precipMm": 0.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-26": {
       "tMaxC": 6.8,
       "tMinC": -1.1,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-27": {
       "tMaxC": 7,
       "tMinC": -1.1,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-28": {
       "tMaxC": 7.5,
       "tMinC": -1.4,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-29": {
       "tMaxC": 6.4,
       "tMinC": -1,
       "precipMm": 2.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-30": {
       "tMaxC": 6.2,
       "tMinC": -1.6,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "03-31": {
       "tMaxC": 6,
       "tMinC": -1.7,
       "precipMm": 1.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-01": {
       "tMaxC": 7.4,
       "tMinC": -2.1,
       "precipMm": 0.2,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-02": {
       "tMaxC": 7.5,
       "tMinC": -1.5,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-03": {
       "tMaxC": 6.3,
@@ -2508,13 +2508,13 @@
       "tMaxC": 7.1,
       "tMinC": -0.2,
       "precipMm": 1.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-05": {
       "tMaxC": 7.2,
       "tMinC": 0.2,
       "precipMm": 2.9,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "04-06": {
       "tMaxC": 7.8,
@@ -2526,31 +2526,31 @@
       "tMaxC": 9,
       "tMinC": 0.6,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-08": {
       "tMaxC": 8.6,
       "tMinC": 0.7,
       "precipMm": 1.3,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-09": {
       "tMaxC": 9,
       "tMinC": 0.8,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-10": {
       "tMaxC": 9.2,
       "tMinC": 1.3,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-11": {
       "tMaxC": 8.9,
       "tMinC": 0.1,
       "precipMm": 3.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-12": {
       "tMaxC": 9.6,
@@ -2562,295 +2562,295 @@
       "tMaxC": 9,
       "tMinC": 0.8,
       "precipMm": 2.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-14": {
       "tMaxC": 8.8,
       "tMinC": 0.1,
       "precipMm": 1.4,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "04-15": {
       "tMaxC": 10.6,
       "tMinC": 0.7,
       "precipMm": 1.5,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-16": {
       "tMaxC": 10.2,
       "tMinC": 1.2,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-17": {
       "tMaxC": 11.3,
       "tMinC": 1.4,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-18": {
       "tMaxC": 12.5,
       "tMinC": 1.1,
       "precipMm": 0.3,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-19": {
       "tMaxC": 13.6,
       "tMinC": 1.2,
       "precipMm": 0.3,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-20": {
       "tMaxC": 14.9,
       "tMinC": 2.5,
       "precipMm": 0.2,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-21": {
       "tMaxC": 14.4,
       "tMinC": 3.8,
       "precipMm": 0.2,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-22": {
       "tMaxC": 14,
       "tMinC": 2.6,
       "precipMm": 0.1,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "04-23": {
       "tMaxC": 11.5,
       "tMinC": 2.3,
       "precipMm": 2.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-24": {
       "tMaxC": 9.8,
       "tMinC": 2.6,
       "precipMm": 5.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-25": {
       "tMaxC": 10.3,
       "tMinC": 2.1,
       "precipMm": 4.6,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "04-26": {
       "tMaxC": 10.6,
       "tMinC": 1.6,
       "precipMm": 0.9,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "04-27": {
       "tMaxC": 10.3,
       "tMinC": 1.7,
       "precipMm": 4.9,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "04-28": {
       "tMaxC": 10.3,
       "tMinC": 1.2,
       "precipMm": 2.4,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "04-29": {
       "tMaxC": 11.4,
       "tMinC": 2.1,
       "precipMm": 2.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "04-30": {
       "tMaxC": 11.6,
       "tMinC": 3.1,
       "precipMm": 3.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-01": {
       "tMaxC": 11.5,
       "tMinC": 3.2,
       "precipMm": 3.9,
-      "weatherCode": 73
+      "weatherCode": 61
     },
     "05-02": {
       "tMaxC": 13.3,
       "tMinC": 3,
       "precipMm": 0.2,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "05-03": {
       "tMaxC": 12,
       "tMinC": 3.5,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "05-04": {
       "tMaxC": 12.7,
       "tMinC": 1.9,
       "precipMm": 0.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-05": {
       "tMaxC": 14,
       "tMinC": 3.5,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-06": {
       "tMaxC": 13.6,
       "tMinC": 4.6,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-07": {
       "tMaxC": 14.4,
       "tMinC": 4.4,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "05-08": {
       "tMaxC": 14.7,
       "tMinC": 3.7,
       "precipMm": 0,
-      "weatherCode": 3
+      "weatherCode": 1
     },
     "05-09": {
       "tMaxC": 14.2,
       "tMinC": 5.7,
       "precipMm": 2.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-10": {
       "tMaxC": 14.2,
       "tMinC": 6.2,
       "precipMm": 5.5,
-      "weatherCode": 3
+      "weatherCode": 63
     },
     "05-11": {
       "tMaxC": 13.4,
       "tMinC": 5.5,
       "precipMm": 2.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-12": {
       "tMaxC": 14.7,
       "tMinC": 5.6,
       "precipMm": 2.2,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-13": {
       "tMaxC": 15.7,
       "tMinC": 5.3,
       "precipMm": 1.1,
-      "weatherCode": 51
+      "weatherCode": 2
     },
     "05-14": {
       "tMaxC": 16.6,
       "tMinC": 6.5,
       "precipMm": 1.9,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-15": {
       "tMaxC": 16.8,
       "tMinC": 6,
       "precipMm": 0.6,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-16": {
       "tMaxC": 17,
       "tMinC": 7.2,
       "precipMm": 1.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-17": {
       "tMaxC": 16.1,
       "tMinC": 6.8,
       "precipMm": 2,
-      "weatherCode": 53
+      "weatherCode": 1
     },
     "05-18": {
       "tMaxC": 16.3,
       "tMinC": 6.7,
       "precipMm": 3.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-19": {
       "tMaxC": 17.6,
       "tMinC": 7.6,
       "precipMm": 1.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-20": {
       "tMaxC": 17.4,
       "tMinC": 8.9,
       "precipMm": 2.8,
-      "weatherCode": 3
+      "weatherCode": 61
     },
     "05-21": {
       "tMaxC": 18.3,
       "tMinC": 8.3,
       "precipMm": 4.5,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-22": {
       "tMaxC": 19.1,
       "tMinC": 9.1,
       "precipMm": 5.3,
-      "weatherCode": 61
+      "weatherCode": 63
     },
     "05-23": {
       "tMaxC": 17.3,
       "tMinC": 9.6,
       "precipMm": 5.9,
-      "weatherCode": 51
+      "weatherCode": 63
     },
     "05-24": {
       "tMaxC": 17.4,
       "tMinC": 9.2,
       "precipMm": 3.7,
-      "weatherCode": 51
+      "weatherCode": 61
     },
     "05-25": {
       "tMaxC": 18.9,
       "tMinC": 9.3,
       "precipMm": 1.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-26": {
       "tMaxC": 19,
       "tMinC": 9.9,
       "precipMm": 2.4,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-27": {
       "tMaxC": 18.4,
       "tMinC": 9.2,
       "precipMm": 3.7,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-28": {
       "tMaxC": 18.8,
       "tMinC": 9.7,
       "precipMm": 2.1,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-29": {
       "tMaxC": 18.8,
       "tMinC": 8.9,
       "precipMm": 1.8,
-      "weatherCode": 3
+      "weatherCode": 2
     },
     "05-30": {
       "tMaxC": 20.2,
       "tMinC": 10.8,
       "precipMm": 5.6,
-      "weatherCode": 53
+      "weatherCode": 63
     },
     "05-31": {
       "tMaxC": 22.2,
       "tMinC": 10.2,
       "precipMm": 0.5,
-      "weatherCode": 3
+      "weatherCode": 1
     }
   }
 }

@@ -6,17 +6,24 @@ import { useEffect, useState } from "react";
 
 /**
  * "All matches" back link that returns to whichever home view the user last had
- * open (calendar or list), defaulting to calendar. The view is remembered in
- * localStorage by HomeTabs; we read it after mount, so the server-rendered href
- * is the calendar default and there's no hydration mismatch.
+ * open (calendar or list) and whether they had revealed hidden matches,
+ * defaulting to calendar. Both are remembered in localStorage by HomeTabs; we
+ * read them after mount, so the server-rendered href is the calendar default and
+ * there's no hydration mismatch.
  */
 export function BackToMatches() {
   const [href, setHref] = useState("/?view=calendar");
 
   useEffect(() => {
     try {
-      const v = localStorage.getItem("wc26-view");
-      setHref(v === "list" ? "/?view=list" : "/?view=calendar");
+      const params = new URLSearchParams();
+      params.set(
+        "view",
+        localStorage.getItem("wc26-view") === "list" ? "list" : "calendar",
+      );
+      if (localStorage.getItem("wc26-hidden") === "1")
+        params.set("hidden", "1");
+      setHref(`/?${params.toString()}`);
     } catch {
       // localStorage unavailable — keep the calendar default
     }

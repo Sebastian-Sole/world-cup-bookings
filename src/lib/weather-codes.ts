@@ -19,7 +19,7 @@ const FALLBACK: WeatherCodeInfo = { label: "Unknown", icon: "CloudOff" };
 
 const WEATHER_CODES: Record<number, WeatherCodeInfo> = {
   0: { label: "Clear sky", icon: "Sun" },
-  1: { label: "Mainly clear", icon: "SunDim" },
+  1: { label: "Mainly clear", icon: "Sun" },
   2: { label: "Partly cloudy", icon: "CloudSun" },
   3: { label: "Overcast", icon: "Cloud" },
   45: { label: "Fog", icon: "CloudFog" },
