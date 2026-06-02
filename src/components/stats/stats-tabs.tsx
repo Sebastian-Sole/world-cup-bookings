@@ -7,6 +7,8 @@ import { PlayerTab } from "@/components/stats/player-tab";
 import { UsTab } from "@/components/stats/us-tab";
 import { WorldCupTab } from "@/components/stats/world-cup-tab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Member } from "@/lib/players";
+import type { LeaderboardRow } from "@/lib/predictions";
 import type { UsStat } from "@/lib/stats";
 import type { WorldCupData } from "@/lib/worldcup-live";
 
@@ -16,6 +18,8 @@ interface StatsTabsProps {
   worldCup: WorldCupData;
   usStats: UsStat[];
   isAdmin: boolean;
+  leaderboard: LeaderboardRow[];
+  members: Member[];
 }
 
 function normalizeTab(value: string | null): StatsTab {
@@ -24,7 +28,13 @@ function normalizeTab(value: string | null): StatsTab {
   return "worldcup";
 }
 
-export function StatsTabs({ worldCup, usStats, isAdmin }: StatsTabsProps) {
+export function StatsTabs({
+  worldCup,
+  usStats,
+  isAdmin,
+  leaderboard,
+  members,
+}: StatsTabsProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -62,7 +72,12 @@ export function StatsTabs({ worldCup, usStats, isAdmin }: StatsTabsProps) {
         <PlayerTab scorers={worldCup.topScorers} />
       </TabsContent>
       <TabsContent value="us">
-        <UsTab stats={usStats} isAdmin={isAdmin} />
+        <UsTab
+          stats={usStats}
+          isAdmin={isAdmin}
+          leaderboard={leaderboard}
+          members={members}
+        />
       </TabsContent>
     </Tabs>
   );

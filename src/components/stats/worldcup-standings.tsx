@@ -39,11 +39,13 @@ export function WorldCupStandings({ data }: StandingsProps) {
                 <thead>
                   <tr className="border-b text-xs text-muted-foreground">
                     <th className="py-1.5 pr-1 text-left font-medium">#</th>
-                    <th className="py-1.5 pr-1 text-left font-medium">Team</th>
+                    <th className="w-full py-1.5 pr-1 text-left font-medium">
+                      Team
+                    </th>
                     {STAT_COLS.map(([col]) => (
                       <th
                         key={col}
-                        className="py-1.5 pl-1 text-right font-medium"
+                        className="py-1.5 pl-1 text-right font-medium whitespace-nowrap"
                       >
                         {col}
                       </th>
@@ -68,8 +70,8 @@ export function WorldCupStandings({ data }: StandingsProps) {
                             {i + 1}
                           </span>
                         </td>
-                        <td className="py-1.5 pr-1">
-                          <div className="flex items-center gap-2">
+                        <td className="w-full py-1.5 pr-1">
+                          <div className="flex min-w-0 items-center gap-2">
                             <TeamFlag team={rowRef(row)} size={20} />
                             <span className="truncate font-medium">
                               {row.name}
@@ -80,7 +82,7 @@ export function WorldCupStandings({ data }: StandingsProps) {
                           <td
                             key={col}
                             className={cn(
-                              "py-1.5 pl-1 text-right",
+                              "py-1.5 pl-1 text-right whitespace-nowrap",
                               col === "Pts"
                                 ? "font-medium text-foreground"
                                 : "text-muted-foreground",

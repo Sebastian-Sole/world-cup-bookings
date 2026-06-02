@@ -32,9 +32,28 @@ export const nameSchema = z
       .regex(/^[\p{L}\p{M}\p{N} .'-]+$/u),
   );
 
+/** A device player id (client-generated, e.g. crypto.randomUUID()). */
+export const playerIdSchema = z
+  .string()
+  .min(8)
+  .max(64)
+  .regex(/^[a-zA-Z0-9_-]+$/);
+
 export const rsvpBody = z.object({
   matchId: matchIdSchema,
   name: nameSchema,
+  playerId: playerIdSchema,
+});
+
+/** Register/rename a device player (POST /api/player). */
+export const playerBody = z.object({
+  playerId: playerIdSchema,
+  name: nameSchema,
+});
+
+/** Link an existing identity on a new device via its sync code. */
+export const linkBody = z.object({
+  code: z.string().min(4).max(20),
 });
 
 /** Admin-set hosting status for a match. */
@@ -53,4 +72,12 @@ export const hostCommentBody = z.object({
 export const usStatBody = z.object({
   key: z.string().min(1).max(40),
   value: z.number().int().min(0).max(1_000_000),
+});
+
+/** A match-winner prediction (POST /api/predictions). */
+export const predictionBody = z.object({
+  playerId: playerIdSchema,
+  name: nameSchema,
+  matchId: matchIdSchema,
+  pick: z.enum(["home", "draw", "away"]),
 });

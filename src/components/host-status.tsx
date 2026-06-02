@@ -8,7 +8,9 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { useMatchCount } from "@/components/home/counts-provider";
 import {
+  effectiveStatus,
   HOST_STATUS_LABEL,
   HOST_STATUS_ORDER,
   type HostStatus,
@@ -89,15 +91,19 @@ export function HostStatusDot({
   className?: string;
 }) {
   const fallback = defaultStatusFor(kickoffUtc);
-  const status = useHostStore((s) => statusOf(s.status, matchId, fallback));
+  const base = useHostStore((s) => statusOf(s.status, matchId, fallback));
   const comment = useHostStore((s) => s.comments[matchId] ?? "");
   const isAdmin = useHostStore((s) => s.isAdmin);
+  const interest = useMatchCount(matchId);
+
+  // Interest auto-upgrades available → limited at the threshold (blocked wins).
+  const status = effectiveStatus(base, interest);
 
   // One dot per game. A note (blue) overrides the hosting-status colour.
   const hasNote = comment.length > 0;
   const label = hasNote
     ? `Note: ${comment}`
-    : `Hosting: ${HOST_STATUS_LABEL[status]}`;
+    : `Hosting: ${HOST_STATUS_LABEL[status]}${status === "limited" && base !== "limited" ? ` (${interest} interested)` : ""}`;
 
   const dot = (
     <span
@@ -121,7 +127,8 @@ export function HostStatusDot({
     );
   }
 
-  const cycle = () => writeStatus(matchId, nextStatus(status));
+  // Admin clicks edit the explicit setting, so cycle from the stored base.
+  const cycle = () => writeStatus(matchId, nextStatus(base));
 
   return (
     // biome-ignore lint/a11y/useSemanticElements: must be a <span> — this control lives inside the card's <button>/<a>, where a nested <button> is invalid HTML
@@ -298,13 +305,16 @@ export function HostLegend({ className }: { className?: string }) {
 export function HostStatusControl({
   matchId,
   kickoffUtc,
+  interestCount = 0,
 }: {
   matchId: string;
   kickoffUtc?: string;
+  interestCount?: number;
 }) {
   const fallback = defaultStatusFor(kickoffUtc);
-  const status = useHostStore((s) => statusOf(s.status, matchId, fallback));
+  const base = useHostStore((s) => statusOf(s.status, matchId, fallback));
   const isAdmin = useHostStore((s) => s.isAdmin);
+  const status = effectiveStatus(base, interestCount);
 
   if (!isAdmin) {
     return (
@@ -313,6 +323,9 @@ export function HostStatusControl({
         <span className="font-medium">Hosting status:</span>
         <span className="text-muted-foreground">
           {HOST_STATUS_LABEL[status]}
+          {status === "limited" && base !== "limited"
+            ? ` (${interestCount} interested)`
+            : ""}
         </span>
       </div>
     );
@@ -323,7 +336,9 @@ export function HostStatusControl({
       <span className="text-sm font-medium">Are you hosting this one?</span>
       <div className="flex flex-wrap gap-2">
         {HOST_STATUS_ORDER.map((s) => {
-          const active = status === s;
+          // Highlight the explicit setting (base); "limited" may also be
+          // auto-applied by interest, but the control edits the real value.
+          const active = base === s;
           return (
             <button
               key={s}
@@ -342,6 +357,11 @@ export function HostStatusControl({
           );
         })}
       </div>
+      {status === "limited" && base !== "limited" ? (
+        <p className="text-xs text-muted-foreground">
+          Auto-marked limited — {interestCount} interested.
+        </p>
+      ) : null}
     </div>
   );
 }

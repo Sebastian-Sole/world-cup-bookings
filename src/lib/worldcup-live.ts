@@ -54,6 +54,8 @@ export interface WorldCupData {
   groupMatches: { group: string; matches: LiveMatch[] }[];
   knockoutByRound: { round: string; matches: LiveMatch[] }[];
   topScorers: TopScorer[];
+  /** Flat list of every match (group + knockout), for result lookup/scoring. */
+  matches: LiveMatch[];
   played: number;
   total: number;
 }
@@ -127,6 +129,11 @@ const NAME_TO_CODE: Map<string, string> = (() => {
 
 function codeFor(teamName: string): string | null {
   return NAME_TO_CODE.get(norm(teamName)) ?? null;
+}
+
+/** Public: ISO3 code for a team name (for odds matching / shared use), or null. */
+export function codeForTeamName(teamName: string): string | null {
+  return codeFor(teamName);
 }
 
 // ---- Parsing / aggregation (pure, unit-testable) ---------------------------
@@ -295,6 +302,7 @@ export function parseWorldCup(feed: RawFeed): WorldCupData {
     groupMatches,
     knockoutByRound: orderKnockout(live),
     topScorers: computeTopScorers(rawMatches),
+    matches: live,
     played: live.filter((m) => m.played).length,
     total: live.length,
   };
@@ -305,6 +313,7 @@ const EMPTY: WorldCupData = {
   groupMatches: [],
   knockoutByRound: [],
   topScorers: [],
+  matches: [],
   played: 0,
   total: 0,
 };

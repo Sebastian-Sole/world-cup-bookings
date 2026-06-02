@@ -49,13 +49,16 @@ export async function POST(request: Request): Promise<Response> {
     );
   }
 
-  const { matchId, name } = parsed.data;
+  const { matchId, name, playerId } = parsed.data;
 
-  // Insert + read-back atomically in a single non-interactive HTTP round-trip.
-  const [inserted, rows] = await sql.transaction([
-    sql`INSERT INTO rsvps (match_id, name)
-        VALUES (${matchId}, ${name})
-        ON CONFLICT (match_id, lower(name)) DO NOTHING
+  // Upsert the player, insert their RSVP (one per person per match), and read
+  // back the list — all in one non-interactive HTTP round-trip.
+  const [, inserted, rows] = await sql.transaction([
+    sql`INSERT INTO players (id, name) VALUES (${playerId}, ${name})
+        ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name`,
+    sql`INSERT INTO rsvps (match_id, name, player_id)
+        VALUES (${matchId}, ${name}, ${playerId})
+        ON CONFLICT (match_id, player_id) DO NOTHING
         RETURNING id`,
     sql`SELECT name FROM rsvps WHERE match_id = ${matchId} ORDER BY created_at ASC`,
   ]);

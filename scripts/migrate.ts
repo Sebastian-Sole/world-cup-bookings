@@ -45,10 +45,17 @@ async function main() {
     CREATE INDEX IF NOT EXISTS rsvps_match_id_idx ON rsvps (match_id)
   `;
 
-  console.log("Creating unique index rsvps_match_name_uniq (if not exists)…");
+  // RSVPs are now tied to a device-player (one RSVP per person per match), so
+  // dedup is by (match_id, player_id) rather than name. Legacy rows keep a null
+  // player_id (Postgres treats nulls as distinct, so they don't collide).
+  console.log("Adding rsvps.player_id column (if not exists)…");
+  await sql`ALTER TABLE rsvps ADD COLUMN IF NOT EXISTS player_id TEXT`;
+
+  console.log("Replacing rsvps dedup index with (match_id, player_id)…");
+  await sql`DROP INDEX IF EXISTS rsvps_match_name_uniq`;
   await sql`
-    CREATE UNIQUE INDEX IF NOT EXISTS rsvps_match_name_uniq
-      ON rsvps (match_id, lower(name))
+    CREATE UNIQUE INDEX IF NOT EXISTS rsvps_match_player_uniq
+      ON rsvps (match_id, player_id)
   `;
 
   console.log("Creating table host_status (if not exists)…");
@@ -90,6 +97,44 @@ async function main() {
   // dropped. (No-op if it was never created.)
   console.log("Dropping unused table player_stats (if exists)…");
   await sql`DROP TABLE IF EXISTS player_stats`;
+
+  console.log("Creating table players (if not exists)…");
+  await sql`
+    CREATE TABLE IF NOT EXISTS players (
+      id          TEXT        PRIMARY KEY,
+      name        TEXT        NOT NULL CHECK (char_length(name) BETWEEN 1 AND 40),
+      created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+
+  // A short, shareable sync code lets one person link the same identity across
+  // devices (paste it on a new device). Partial unique index allows nulls
+  // during backfill (codes are assigned on first /api/player call).
+  console.log("Adding players.code column + unique index (if not exists)…");
+  await sql`ALTER TABLE players ADD COLUMN IF NOT EXISTS code TEXT`;
+  await sql`
+    CREATE UNIQUE INDEX IF NOT EXISTS players_code_uniq
+      ON players (code) WHERE code IS NOT NULL
+  `;
+
+  console.log("Creating table predictions (if not exists)…");
+  await sql`
+    CREATE TABLE IF NOT EXISTS predictions (
+      id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+      player_id   TEXT        NOT NULL REFERENCES players (id) ON DELETE CASCADE,
+      match_id    TEXT        NOT NULL,
+      pick        TEXT        NOT NULL CHECK (pick IN ('home','draw','away')),
+      odds        NUMERIC,
+      created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+      updated_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+      UNIQUE (player_id, match_id)
+    )
+  `;
+
+  console.log("Creating index predictions_match_id_idx (if not exists)…");
+  await sql`
+    CREATE INDEX IF NOT EXISTS predictions_match_id_idx ON predictions (match_id)
+  `;
 
   console.log("Migration complete.");
 }

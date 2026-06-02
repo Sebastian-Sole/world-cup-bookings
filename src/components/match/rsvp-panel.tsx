@@ -1,17 +1,13 @@
 "use client";
 
-import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import { Users } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
+import { useIdentity } from "@/components/identity-provider";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Field, FieldError, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
 import type { InterestResponse } from "@/lib/types";
 import { useInterestStore } from "@/store/interest-store";
 
@@ -20,21 +16,6 @@ interface RsvpPanelProps {
   initialNames: string[];
   initialCount: number;
 }
-
-// Client-side form schema. Mirrors `nameSchema`'s constraints but WITHOUT the
-// trim/collapse `.transform()` — a transforming schema makes the resolver's
-// input and output types diverge and trips @hookform/resolvers' zod overloads.
-// The server re-validates with `nameSchema` (the source of truth) and applies
-// the canonical normalization.
-const formSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(1, "Please enter your name")
-    .max(40, "Name must be 40 characters or fewer")
-    .regex(/^[\p{L}\p{M}\p{N} .'-]+$/u, "Use letters, spaces, . ' or -"),
-});
-type FormValues = z.infer<typeof formSchema>;
 
 /** Initials for an avatar fallback: first letter of up to the first two words. */
 function initials(name: string): string {
@@ -52,6 +33,11 @@ export function RsvpPanel({
   // Server truth lives in local state, refreshed from POST responses.
   const [names, setNames] = useState<string[]>(initialNames);
   const [count, setCount] = useState<number>(initialCount);
+  const [submitting, setSubmitting] = useState(false);
+
+  // The shared device identity — one name set once via the required gate, so
+  // `player` is effectively always present here. Guard defensively regardless.
+  const { player, ready } = useIdentity();
 
   const optimisticEntry = useInterestStore((s) => s.optimistic[matchId]);
   const submittedStored = useInterestStore((s) =>
@@ -70,34 +56,21 @@ export function RsvpPanel({
   const rollback = useInterestStore((s) => s.rollback);
   const markSubmitted = useInterestStore((s) => s.markSubmitted);
 
-  const form = useForm<FormValues>({
-    // standardSchemaResolver (not zodResolver) sidesteps a zod-4 internal type
-    // brand mismatch in @hookform/resolvers@5.4.0 under pnpm; zod 4 implements
-    // the Standard Schema spec, so this is the version-agnostic path.
-    resolver: standardSchemaResolver(formSchema),
-    defaultValues: { name: "" },
-  });
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = form;
-
   // Display = server names + any still-pending optimistic names.
   const displayNames = [...names, ...(optimisticEntry?.names ?? [])];
   const displayCount = count + (optimisticEntry?.delta ?? 0);
 
-  async function onSubmit(values: FormValues) {
-    const name = values.name;
+  async function onRsvp() {
+    if (!ready || !player) return;
+    const name = player.name;
+    setSubmitting(true);
     applyOptimistic(matchId, name);
 
     try {
       const res = await fetch("/api/interest", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchId, name }),
+        body: JSON.stringify({ matchId, name, playerId: player.id }),
       });
 
       if (!res.ok) throw new Error(`RSVP failed: ${res.status}`);
@@ -109,7 +82,6 @@ export function RsvpPanel({
       setCount(data.count);
       reconcile(matchId, data.names, data.count);
       markSubmitted(matchId);
-      reset({ name: "" });
 
       if (data.deduped) {
         toast.info("You were already on the list");
@@ -119,6 +91,8 @@ export function RsvpPanel({
     } catch {
       rollback(matchId);
       toast.error("Couldn't save your RSVP. Please try again.");
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -136,26 +110,14 @@ export function RsvpPanel({
             You&apos;re in
           </Button>
         ) : (
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-3"
-            noValidate
+          <Button
+            type="button"
+            onClick={onRsvp}
+            disabled={submitting || !ready || !player}
+            className="w-full"
           >
-            <Field data-invalid={errors.name ? true : undefined}>
-              <FieldLabel htmlFor="rsvp-name">Your name</FieldLabel>
-              <Input
-                id="rsvp-name"
-                placeholder="e.g. Sam R."
-                autoComplete="name"
-                aria-invalid={errors.name ? true : undefined}
-                {...register("name")}
-              />
-              <FieldError errors={errors.name ? [errors.name] : undefined} />
-            </Field>
-            <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Adding…" : "I'm watching"}
-            </Button>
-          </form>
+            {submitting ? "Adding…" : "I'm watching"}
+          </Button>
         )}
 
         <AttendeeList names={displayNames} count={displayCount} />

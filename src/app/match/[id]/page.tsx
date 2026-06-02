@@ -4,11 +4,13 @@ import { HostProvider } from "@/components/host-provider";
 import { HostComment, HostStatusControl } from "@/components/host-status";
 import { BackToMatches } from "@/components/match/back-to-matches";
 import { MatchHero } from "@/components/match/match-hero";
+import { PredictionPanel } from "@/components/match/prediction-panel";
 import { RsvpPanel } from "@/components/match/rsvp-panel";
 import { WeatherPanel } from "@/components/match/weather-panel";
 import { getHostState, type HostState } from "@/lib/host";
 import { getInterest } from "@/lib/interest";
 import { getMatchById, getVenue } from "@/lib/matches";
+import { getOddsByMatchId } from "@/lib/odds";
 import type { InterestResponse } from "@/lib/types";
 
 interface PageProps {
@@ -50,6 +52,15 @@ export default async function MatchPage({ params }: PageProps) {
     // No DATABASE_URL yet — default (all "available", no notes).
   }
 
+  // Head-to-head odds power the per-outcome points. Guard so a missing key /
+  // quota / network error degrades to flat 1-point scoring rather than crashing.
+  let oddsMap: Record<string, import("@/lib/odds").MatchOdds> = {};
+  try {
+    oddsMap = await getOddsByMatchId();
+  } catch {
+    // No ODDS_API_KEY or unreachable — render with flat-points fallback.
+  }
+
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
       <BackToMatches />
@@ -64,9 +75,11 @@ export default async function MatchPage({ params }: PageProps) {
             <HostStatusControl
               matchId={match.id}
               kickoffUtc={match.kickoffUtc}
+              interestCount={initial.count}
             />
             <HostComment matchId={match.id} />
           </div>
+          <PredictionPanel match={match} odds={oddsMap[match.id] ?? null} />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <WeatherPanel matchId={match.id} />
             <RsvpPanel

@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { StatsTabs } from "@/components/stats/stats-tabs";
 import { isAdminRequest } from "@/lib/admin";
+import { getMembers, type Member } from "@/lib/players";
+import { getLeaderboard, type LeaderboardRow } from "@/lib/predictions";
 import { getUsStats, type UsStat } from "@/lib/stats";
 import { getWorldCupData, type WorldCupData } from "@/lib/worldcup-live";
 
@@ -20,6 +22,7 @@ export default async function StatsPage() {
       groupMatches: [],
       knockoutByRound: [],
       topScorers: [],
+      matches: [],
       played: 0,
       total: 0,
     };
@@ -31,6 +34,25 @@ export default async function StatsPage() {
     usStats = await getUsStats();
   } catch {
     // No DATABASE_URL yet — render with no "Us" counters.
+  }
+
+  // Predictions leaderboard (reads from the same DB; guard the same way).
+  let leaderboard: LeaderboardRow[] = [];
+  try {
+    leaderboard = await getLeaderboard();
+  } catch {
+    // No DATABASE_URL yet — render with an empty leaderboard.
+  }
+
+  // Member list (name → sync code) is ADMIN-ONLY: fetched only when isAdmin,
+  // so codes are never sent to non-admin clients. Used for code recovery.
+  let members: Member[] = [];
+  if (isAdmin) {
+    try {
+      members = await getMembers();
+    } catch {
+      // No DB — empty member list.
+    }
   }
 
   return (
@@ -45,7 +67,13 @@ export default async function StatsPage() {
         </p>
       </div>
       <Suspense>
-        <StatsTabs worldCup={worldCup} usStats={usStats} isAdmin={isAdmin} />
+        <StatsTabs
+          worldCup={worldCup}
+          usStats={usStats}
+          isAdmin={isAdmin}
+          leaderboard={leaderboard}
+          members={members}
+        />
       </Suspense>
     </main>
   );
