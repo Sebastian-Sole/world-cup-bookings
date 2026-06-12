@@ -11,6 +11,7 @@ import { getHostState, type HostState } from "@/lib/host";
 import { getInterest } from "@/lib/interest";
 import { getMatchById, getVenue } from "@/lib/matches";
 import { getOddsByMatchId } from "@/lib/odds";
+import { getResults, type MatchResult } from "@/lib/scores";
 import type { InterestResponse } from "@/lib/types";
 
 interface PageProps {
@@ -61,6 +62,15 @@ export default async function MatchPage({ params }: PageProps) {
     // No ODDS_API_KEY or unreachable — render with flat-points fallback.
   }
 
+  // Live / final score (The Odds API via scores.ts). Null until the match has a
+  // score; guard so a missing key / quota / DB degrades to "no score yet".
+  let result: MatchResult | null = null;
+  try {
+    result = (await getResults()).get(match.id) ?? null;
+  } catch {
+    // No score source available — render without a score.
+  }
+
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6 sm:py-12">
       <BackToMatches />
@@ -70,7 +80,7 @@ export default async function MatchPage({ params }: PageProps) {
         initialComments={hostState.comments}
       >
         <div className="flex flex-col gap-6">
-          <MatchHero match={match} venue={venue} />
+          <MatchHero match={match} venue={venue} result={result} />
           <div className="flex flex-col gap-4 rounded-4xl border bg-card p-5 shadow-sm">
             <HostStatusControl
               matchId={match.id}

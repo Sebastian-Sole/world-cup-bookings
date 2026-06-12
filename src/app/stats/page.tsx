@@ -11,8 +11,9 @@ export const metadata = { title: "Stats" };
 export default async function StatsPage() {
   const isAdmin = await isAdminRequest();
 
-  // World Cup + Player data come live from openfootball (free, keyless, cached).
-  // getWorldCupData never throws (degrades to empty), but guard defensively.
+  // World Cup data: openfootball fixtures (free, keyless, cached) with real
+  // results overlaid from The Odds API. getWorldCupData never throws (degrades
+  // to empty), but guard defensively.
   let worldCup: WorldCupData;
   try {
     worldCup = await getWorldCupData();
@@ -21,7 +22,6 @@ export default async function StatsPage() {
       groupStandings: [],
       groupMatches: [],
       knockoutByRound: [],
-      topScorers: [],
       matches: [],
       played: 0,
       total: 0,
@@ -62,8 +62,7 @@ export default async function StatsPage() {
           Stats
         </h1>
         <p className="text-muted-foreground">
-          Live standings &amp; top scorers from openfootball, and how we&apos;re
-          doing.
+          Live standings, the bracket, and how we&apos;re doing.
         </p>
       </div>
       <Suspense>

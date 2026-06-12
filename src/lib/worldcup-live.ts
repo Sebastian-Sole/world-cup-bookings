@@ -1,12 +1,13 @@
 import matchesData from "@/data/matches.json";
+import { getResultsByPair, type PairResult, pairKey } from "@/lib/scores";
 import type { Match } from "@/lib/types";
 
 /**
- * Live World Cup data derived from openfootball's public-domain worldcup.json
- * (the same keyless source our fixtures come from). It carries final scores and
- * individual goal scorers once matches are played, so we can compute standings,
- * a top-scorer leaderboard, and resolved knockout fixtures — all free, no API
- * key, no rate limit. Everything is empty/zero until the tournament starts.
+ * World Cup structure derived from openfootball's public-domain worldcup.json
+ * (the same keyless source our fixtures come from): groups, group/knockout
+ * fixtures, and the bracket. openfootball doesn't reliably post 2026 scores, so
+ * real results are overlaid from The Odds API (see `scores.ts` / `applyResults`)
+ * to compute standings. Everything is empty/zero until matches are played.
  */
 
 const SOURCE_URL =
@@ -41,19 +42,10 @@ export interface GroupRow {
   points: number;
 }
 
-export interface TopScorer {
-  player: string;
-  teamName: string;
-  teamCode: string | null;
-  goals: number;
-  penalties: number;
-}
-
 export interface WorldCupData {
   groupStandings: { group: string; rows: GroupRow[] }[];
   groupMatches: { group: string; matches: LiveMatch[] }[];
   knockoutByRound: { round: string; matches: LiveMatch[] }[];
-  topScorers: TopScorer[];
   /** Flat list of every match (group + knockout), for result lookup/scoring. */
   matches: LiveMatch[];
   played: number;
@@ -62,12 +54,6 @@ export interface WorldCupData {
 
 // ---- openfootball raw shapes ----------------------------------------------
 
-interface RawGoal {
-  name?: string;
-  minute?: number;
-  penalty?: boolean;
-  owngoal?: boolean;
-}
 interface RawMatch {
   round?: string;
   date?: string;
@@ -77,8 +63,6 @@ interface RawMatch {
   group?: string;
   ground?: string;
   score?: { ft?: [number, number]; ht?: [number, number] };
-  goals1?: RawGoal[];
-  goals2?: RawGoal[];
 }
 interface RawFeed {
   name?: string;
@@ -229,36 +213,6 @@ function computeGroupStandings(
     });
 }
 
-function computeTopScorers(rawMatches: RawMatch[]): TopScorer[] {
-  const tally = new Map<string, TopScorer>();
-  const add = (g: RawGoal, teamName: string) => {
-    if (!g.name || g.owngoal) return;
-    const key = `${g.name}__${teamName}`;
-    const entry =
-      tally.get(key) ??
-      ({
-        player: g.name,
-        teamName,
-        teamCode: codeFor(teamName),
-        goals: 0,
-        penalties: 0,
-      } satisfies TopScorer);
-    entry.goals++;
-    if (g.penalty) entry.penalties++;
-    tally.set(key, entry);
-  };
-  for (const rm of rawMatches) {
-    for (const g of rm.goals1 ?? []) add(g, rm.team1 ?? "");
-    for (const g of rm.goals2 ?? []) add(g, rm.team2 ?? "");
-  }
-  return [...tally.values()].sort(
-    (a, b) =>
-      b.goals - a.goals ||
-      b.penalties - a.penalties ||
-      a.player.localeCompare(b.player),
-  );
-}
-
 function orderKnockout(
   matches: LiveMatch[],
 ): { round: string; matches: LiveMatch[] }[] {
@@ -279,10 +233,37 @@ function orderKnockout(
     .map(([round, list]) => ({ round, matches: list }));
 }
 
+/**
+ * Overlay real results (from The Odds API via scores.ts) onto openfootball's
+ * fixture skeleton, in place. openfootball gives us the structure (groups,
+ * fixtures, knockout bracket) but not 2026 scores, so we mark a match played
+ * with its score whenever we have a FINAL result for that team pair. In-progress
+ * (not-yet-final) results are skipped here so they don't count toward standings
+ * or settle predictions; live scores surface only on the match page.
+ */
+function applyResults(
+  live: LiveMatch[],
+  byPair: Map<string, PairResult>,
+): void {
+  for (const m of live) {
+    if (!m.team1Code || !m.team2Code) continue;
+    const r = byPair.get(pairKey(m.team1Code, m.team2Code));
+    if (!r || !r.completed) continue;
+    const sameOrientation = m.team1Code === r.team1Code;
+    m.score1 = sameOrientation ? r.score1 : r.score2;
+    m.score2 = sameOrientation ? r.score2 : r.score1;
+    m.played = true;
+  }
+}
+
 /** Parse a raw openfootball feed into the structured WorldCupData. Pure. */
-export function parseWorldCup(feed: RawFeed): WorldCupData {
+export function parseWorldCup(
+  feed: RawFeed,
+  results?: Map<string, PairResult>,
+): WorldCupData {
   const rawMatches = feed.matches ?? [];
   const live = rawMatches.map(toLiveMatch);
+  if (results) applyResults(live, results);
 
   const groupMatches = (() => {
     const byGroup = new Map<string, LiveMatch[]>();
@@ -301,7 +282,6 @@ export function parseWorldCup(feed: RawFeed): WorldCupData {
     groupStandings: computeGroupStandings(live),
     groupMatches,
     knockoutByRound: orderKnockout(live),
-    topScorers: computeTopScorers(rawMatches),
     matches: live,
     played: live.filter((m) => m.played).length,
     total: live.length,
@@ -312,7 +292,6 @@ const EMPTY: WorldCupData = {
   groupStandings: [],
   groupMatches: [],
   knockoutByRound: [],
-  topScorers: [],
   matches: [],
   played: 0,
   total: 0,
@@ -324,11 +303,17 @@ const EMPTY: WorldCupData = {
  * Never throws — any failure degrades to empty data.
  */
 export async function getWorldCupData(): Promise<WorldCupData> {
+  // Real results (final scores) come from The Odds API and are overlaid onto
+  // openfootball's fixture skeleton. Both are fetched concurrently; results
+  // degrade to an empty map on any failure, so the fixtures still render.
+  const [feedRes, results] = await Promise.all([
+    fetch(SOURCE_URL, { next: { revalidate: 600 } }).catch(() => null),
+    getResultsByPair().catch(() => new Map<string, PairResult>()),
+  ]);
   try {
-    const res = await fetch(SOURCE_URL, { next: { revalidate: 600 } });
-    if (!res.ok) return EMPTY;
-    const feed = (await res.json()) as RawFeed;
-    return parseWorldCup(feed);
+    if (!feedRes || !feedRes.ok) return EMPTY;
+    const feed = (await feedRes.json()) as RawFeed;
+    return parseWorldCup(feed, results);
   } catch {
     return EMPTY;
   }

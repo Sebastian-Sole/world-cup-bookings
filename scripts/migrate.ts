@@ -136,6 +136,23 @@ async function main() {
     CREATE INDEX IF NOT EXISTS predictions_match_id_idx ON predictions (match_id)
   `;
 
+  // Final/live results, persisted from The Odds API's rolling 3-day /scores
+  // window (see src/lib/scores.ts). That window only exposes the last ~3 days of
+  // completed games, so we persist each result the first time we see it; this
+  // table is then the permanent source of truth for standings + prediction
+  // scoring across the whole month-long tournament. Keyed by OUR match id, with
+  // scores oriented to our fixture (score1 = team1, score2 = team2).
+  console.log("Creating table match_results (if not exists)…");
+  await sql`
+    CREATE TABLE IF NOT EXISTS match_results (
+      match_id    TEXT        PRIMARY KEY,
+      score1      INT         NOT NULL,
+      score2      INT         NOT NULL,
+      completed   BOOLEAN     NOT NULL DEFAULT true,
+      updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+
   console.log("Migration complete.");
 }
 

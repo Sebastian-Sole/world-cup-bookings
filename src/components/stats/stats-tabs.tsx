@@ -1,9 +1,8 @@
 "use client";
 
-import { Beer, Trophy, Users } from "lucide-react";
+import { Beer, Trophy } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
-import { PlayerTab } from "@/components/stats/player-tab";
 import { UsTab } from "@/components/stats/us-tab";
 import { WorldCupTab } from "@/components/stats/world-cup-tab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -12,7 +11,7 @@ import type { LeaderboardRow } from "@/lib/predictions";
 import type { UsStat } from "@/lib/stats";
 import type { WorldCupData } from "@/lib/worldcup-live";
 
-type StatsTab = "worldcup" | "player" | "us";
+type StatsTab = "worldcup" | "us";
 
 interface StatsTabsProps {
   worldCup: WorldCupData;
@@ -23,7 +22,6 @@ interface StatsTabsProps {
 }
 
 function normalizeTab(value: string | null): StatsTab {
-  if (value === "player") return "player";
   if (value === "us") return "us";
   return "worldcup";
 }
@@ -56,10 +54,6 @@ export function StatsTabs({
           <Trophy />
           World Cup
         </TabsTrigger>
-        <TabsTrigger value="player">
-          <Users />
-          Player
-        </TabsTrigger>
         <TabsTrigger value="us">
           <Beer />
           Us
@@ -67,9 +61,6 @@ export function StatsTabs({
       </TabsList>
       <TabsContent value="worldcup">
         <WorldCupTab data={worldCup} />
-      </TabsContent>
-      <TabsContent value="player">
-        <PlayerTab scorers={worldCup.topScorers} />
       </TabsContent>
       <TabsContent value="us">
         <UsTab

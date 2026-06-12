@@ -6,6 +6,7 @@ import {
 } from "@/components/norway-flag";
 import { TeamFlag } from "@/components/team-flag";
 import { Badge } from "@/components/ui/badge";
+import type { MatchResult } from "@/lib/scores";
 import {
   DISPLAY_TZ,
   DISPLAY_TZ_LABEL,
@@ -18,6 +19,7 @@ import { cn } from "@/lib/utils";
 interface MatchHeroProps {
   match: Match;
   venue: Venue | undefined;
+  result?: MatchResult | null;
 }
 
 function TeamName({ team }: { team: TeamRef }) {
@@ -34,7 +36,7 @@ function TeamName({ team }: { team: TeamRef }) {
   );
 }
 
-export function MatchHero({ match, venue }: MatchHeroProps) {
+export function MatchHero({ match, venue, result }: MatchHeroProps) {
   const roundLabel =
     match.stage === "group" && match.group
       ? `Group ${match.group}`
@@ -53,11 +55,31 @@ export function MatchHero({ match, venue }: MatchHeroProps) {
         {roundLabel !== match.round ? (
           <Badge variant="ghost">{match.round}</Badge>
         ) : null}
+        {result ? (
+          <Badge variant={result.completed ? "outline" : "default"}>
+            {result.completed ? "Full time" : "Live"}
+          </Badge>
+        ) : null}
       </div>
 
       <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4">
         <TeamName team={match.team1} />
-        <span className="text-lg font-medium text-muted-foreground">vs</span>
+        {result ? (
+          <div className="flex flex-col items-center gap-1">
+            <span className="font-heading text-3xl font-bold tabular-nums sm:text-4xl">
+              {result.score1}
+              <span className="mx-1.5 text-muted-foreground">–</span>
+              {result.score2}
+            </span>
+            {result.completed ? null : (
+              <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                in play
+              </span>
+            )}
+          </div>
+        ) : (
+          <span className="text-lg font-medium text-muted-foreground">vs</span>
+        )}
         <TeamName team={match.team2} />
       </div>
 
